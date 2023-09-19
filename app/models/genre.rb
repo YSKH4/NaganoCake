@@ -5,4 +5,5 @@ class Genre < ApplicationRecord
    '--選択してください--' + name 
   end
   
+   validates :name, presence: true
 end
