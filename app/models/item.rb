@@ -16,6 +16,15 @@ class Item < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
+  
+  def is_active_text
+    if self.is_active == true
+      '販売中'
+    else
+      '販売停止中'
+    end
+  end
+  
       
       
 end
