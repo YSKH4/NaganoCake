@@ -13,3 +13,28 @@
  *= require_tree .
  *= require_self
  */
+
+.image-container {
+  position: relative; /* 相対位置指定 */
+  text-align: center; /* テキストを中央揃え */
+}
+.main-text {
+  position: absolute; /* 絶対位置指定 */
+  top: 50%; /* 上端を中央に配置 */
+  left: 50%; /* 左端を中央に配置 */
+  transform: translate(-50%, -50%); /* 中央揃え */
+  background-color: rgba(255, 255, 255, 0.7); /* 背景色（任意） */
+  padding: 10px; /* テキスト周りの余白（任意） */
+}
+.text-content {
+  text-align: center; /* テキストを中央揃え */
+}
+
+footer {
+  height: 100px;
+  width: 100%;
+  margin: ０auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
