@@ -10,6 +10,6 @@ class Public::ItemsController < ApplicationController
     #ジャンル一覧表示
     @genres = Genre.all
     #商品詳細表示
-    #@item = Item.find(params[:id])
+    @item = Item.find(params[:id])
   end
 end
