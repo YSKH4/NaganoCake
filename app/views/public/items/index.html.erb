@@ -1,2 +1,26 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<!--ジャンル一覧（ジャンル検索機能-->
+<%= render "genre_list", genres: @genres %>
+<!--おしまい-->
+
+<!--商品一覧タイトル-->
+<table>
+  <tr>
+    <th><h2>商品一覧</h2></th>
+    <td>(全<%= Genre.count %>件)</td>
+  </tr>
+</table>
+<!--おしまい-->
+
+<!--商品一覧-->
+<table>
+  <% @items.each do |item| %>
+    <tr>
+      <td>
+          <%= item.image %><br>
+          <%= item.name %><br>
+          <%= item.price %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<!--おしまい-->

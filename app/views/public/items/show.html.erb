@@ -1,2 +1,16 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<!--ジャンル一覧（ジャンル検索機能-->
+<%= render "genre_list", genres: @genres %>
+<!--おしまい-->
+
+<!--商品詳細-->
+<table>
+  <tr>
+    <td>商品画像</td>
+    <td>
+      <!--<strong>%= @item.name %></strong><br>-->
+      <!--%= @item.caption %><br>-->
+      <!--%= (@item.price * 1.1).floor %>(税込)-->
+    </td>
+  </tr>
+</table>
+<!--おしまい-->

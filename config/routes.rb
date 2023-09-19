@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   end
   
   namespace :admin do
-    esources :customers, only: [:index, :show, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
   end
   
   namespace :admin do
@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   end
   
   scope module: :public do
-    root to:"homes#top"
+    root to: "homes#top"
     get 'homes/about'
   end
   
