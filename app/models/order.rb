@@ -2,7 +2,15 @@ class Order < ApplicationRecord
   belongs_to :customer
   has_many :order_details, dependent: :destroy
   
-  def full_name
+  def  add_tax_price
+   (item.price * 1.10).round
+  end
+  
+  def sum_of_price
+    item.taxin_price * quantity
+  end
+  
+  def full_name_text
     "#{last_name}#{first_name}"
   end
   
@@ -21,10 +29,5 @@ class Order < ApplicationRecord
      end
   end
      
-   def status_text
-     if status == 0
-      Order.statuses_i18n[:unpaid]
-     end
-   end
 
 end

@@ -1,12 +1,35 @@
 <h1>注文履歴詳細</h1>
 
 <div>
-  <p>購入者：<%= @order.full_name %></p>
+  <p>購入者：<%= @order.full_name_text %></p>
   <p>注文日：<%= @order.created_at %></p>
   <p>配送先：<%= @order.full_address %></p>
   <p>支払方法：<%= @order.payment_method_text %></p>
   <%= form_with model: @order,url: admin_orders_path do |f| %>
-  <p>注文ステータス：<%= f.select :status, options_from_collection_for_select(Order.all, :id, :order_display) %></p>
-  <%= f.submit '新規登録' %>
+  <p>注文ステータス：<%= f.select :status, Order.statuses.keys.to_a, {}, class: 'form-control' %></p>
+    <%= f.submit '新規登録' %>
+  <% end %>
 </div>
 
+  <table class='table table-hover table-inverse'>
+   <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>制作ステータス</th>
+    </tr>
+   </thead>
+   <tbody>
+      <% @items.each do |item| %>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%=  @total.round.to_s(:delimited) %></td>
+        <td><%= item.amount %></td>
+        <td><%= item.add_tax_price.to_s(:dalimited) %></td>
+        <td><%= item.making_status %></td>
+      </tr>
+     <% end %>
+    </tbody>
+   </table>
