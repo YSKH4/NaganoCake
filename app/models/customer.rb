@@ -7,12 +7,23 @@ class Customer < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :addresses, dependent: :destroy
   has_many :orders, dependent: :destroy
-
-  validates :last_name, presence: true
-  validates :first_name, presence: true
-  validates :last_name_kana, presence: true
-  validates :first_name_kana, presence: true
-  validates :email, presence: true
-  validates :zip_code, presence: true
-  validates :address, presence: true
+  
+  
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+  
+  def full_name_kana
+    "#{first_name_kana} #{last_name_kana}"
+  end
+  
+  
+  def is_deleted_text
+    if self.is_deleted == false
+      '退会'
+    else
+      '有効'
+    end
+  end
+      
 end

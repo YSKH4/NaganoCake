@@ -28,17 +28,17 @@
 
         <%= f.label :zip_code, "郵便番号(ハイフンなし)" %>
     　　  <div class="field">
-      　　<%= text_field :zip_code, autofocus: true, autocomplete: "zip_code", placeholder: "0000000" %>
+      　　<%= f.text_field :zip_code, autofocus: true, autocomplete: "zip_code", placeholder: "0000000" %>
      　  </div>
 
       　<%= f.label :address, "住所" %>
     　　  <div class="field">
-      　　<%= text_field :address, autofocus: true, autocomplete: "address", placeholder: "東京都渋谷区代々木神園町0-0" %>
+      　　<%= f.text_field :address, autofocus: true, autocomplete: "address", placeholder: "東京都渋谷区代々木神園町0-0" %>
      　  </div>
 
      　　<%= f.label :telephone_number, "電話番号(ハイフンなし) "%>
     　　  <div class="field">
-      　　<%= text_field :telephone_number, autofocus: true, autocomplete: "telephone_number", placeholder: "00000000000" %>
+      　　<%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number", placeholder: "00000000000" %>
      　  </div>
 
         <%= f.label :password, "パスワード" %>
