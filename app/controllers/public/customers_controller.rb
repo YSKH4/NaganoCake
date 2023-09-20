@@ -1,14 +1,18 @@
 class Public::CustomersController < ApplicationController
 
   def show
-    @customer = Customer.find(current_customer.id)
+    @customer = current_customer
   end
 
   def edit
-    @customer = Customer.find(current_customer.id)
+    @customer = current_customer
+    
+  end
+  
+  def update
+    @customer = current_customer
     if @customer.update(customer_params)
-      flash[:notice] = "編集を保存しました。"
-      redirect_to customer_mypage_path(current_user.id)
+      redirect_to customers_mypage_path
     else
       render :edit
     end
@@ -20,6 +24,6 @@ class Public::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:email, :first_name, :last_name, :last_name_kana, :first_name_kana, :zip_code, :address, :telephone_number)
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :zip_code, :address, :telephone_number, :email, :is_deleted)
   end
 end
