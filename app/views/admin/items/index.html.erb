@@ -18,6 +18,7 @@
         <td><%= item.price %></td>
         <td><%= item.genre.name %></td>
         <td><%= item.is_active_text %></td>
+        <td><%= link_to 'Destroy', admin_item_path(item.id), method: :delete, data: { confirm: "本当に消しますか?" }, class: "btn btn-sm btn-danger" %></td>
       </tr>
      <% end %>
     </tbody>
