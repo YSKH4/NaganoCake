@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
     resources :items, only: [:index, :new, :create, :show, :edit, :update, :destroy]
 
-    get 'homes/top'
+    get '/' => "homes#top"
   end
 
   scope module: :public do
