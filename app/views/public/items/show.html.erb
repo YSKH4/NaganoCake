@@ -9,8 +9,15 @@
     <td>
       <!--<strong>%= @item.name %></strong><br>-->
       <!--%= @item.caption %><br>-->
-      <!--%= (@item.price * 1.1).floor %>(税込)-->
+      <!--%= @item.price %>-->
     </td>
   </tr>
 </table>
+<!--おしまい-->
+
+<!--カートに入れるところ-->
+<%=form_with model: @cart_item do |f| %>
+  <%= f.select :amount, [["個数選択"],[1],[2],[3],[4],[5],[6],[7],[8],[9],[10]] %>
+  <%= f.submit"カートに入れる" %>
+<% end %>
 <!--おしまい-->

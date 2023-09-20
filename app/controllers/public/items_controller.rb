@@ -7,9 +7,11 @@ class Public::ItemsController < ApplicationController
   end
 
   def show
+    #商品詳細表示
+    #@item = Item.find(params[:id])
     #ジャンル一覧表示
     @genres = Genre.all
-    #商品詳細表示
-    @item = Item.find(params[:id])
+    #数量選択
+    @cart_item = CartItem.new
   end
 end
