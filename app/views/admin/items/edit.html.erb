@@ -1,5 +1,6 @@
 
-  <h2>商品編集</h2>
+  <h1>商品編集</h1>
+    <div style= 'width: 80% ; margin: 0 auto;' >
 　　<%= form_with model: @item,url: admin_item_path do |f| %>
     
   　　<label for="inputName">商品名</label>
@@ -29,6 +30,6 @@
   　　<%= f.label :is_active1, "販売停止中" %>
       <br>
 
- 　　 <%= f.submit "変更を保存" %>
+ 　　<%= f.submit "変更を保存", class: "btn btn-success" %>
 　　<% end %>
-　
+　  </div>
