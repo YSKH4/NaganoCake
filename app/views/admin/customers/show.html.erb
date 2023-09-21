@@ -1,4 +1,4 @@
-  <h4><p><%= @customer.full_name %><P>さんの会員詳細</h4>
+  <h1><p><%= @customer.full_name %><P>さんの会員詳細</h1>
 
 
   <p>会員ID <%= @customer.id %></p>
@@ -17,5 +17,4 @@
 
   <p>会員ステータス <%= @customer.is_deleted_text %></p>
   
-  <p><%= link_to "編集する", edit_admin_customer_path %></p> <p><%= link_to "注文履歴一覧を見る", admin_order_path %></p>
-
+  <p><%= link_to "編集する", edit_admin_customer_path, class: "btn btn-success" %></p> <p><%= link_to "注文履歴一覧を見る", admin_order_path, class: "btn btn-primary" %></p>
