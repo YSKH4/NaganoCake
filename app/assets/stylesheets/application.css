@@ -30,10 +30,23 @@
   text-align: center; /* テキストを中央揃え */
 }
 
+.new_items_container {
+  display: flex; /* Flexbox を使用して子要素を横に並べる */
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 20px; /* 商品間の間隔を設定 */
+}
+
+.new_item {
+  width: calc(33.33% - 20px); /* 横に並べる要素の幅を設定 */
+  padding: 10px; /* 商品の周りに余白を追加 */
+  border: 1px solid #ccc; /* 商品のボーダーを追加 */
+}
+
 footer {
   height: 100px;
   width: 100%;
-  margin: ０auto;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
