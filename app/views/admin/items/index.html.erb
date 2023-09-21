@@ -17,7 +17,7 @@
       <tr>
         <td><%= item.id %></td>
         <td><%= link_to item.name, admin_item_path(item.id)%></td>
-        <td><%= item.price %></td>
+        <td><%= item.price %>円</td>
         <td><%= item.genre.name %></td>
         <td><% if item.is_active? %>
             <p class="text-success , font-weight-bold"><%= item.is_active_text %></p>
@@ -32,5 +32,7 @@
    </table>
    </div>
    
-   <%= paginate @items %>
+   <div style= 'width: 80% ; margin: 0 auto;' >
+     <%= paginate @items %>
+   </div>
    
