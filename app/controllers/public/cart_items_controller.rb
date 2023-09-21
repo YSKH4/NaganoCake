@@ -1,19 +1,16 @@
 class Public::CartItemsController < ApplicationController
   def index
-    #ショッピングカートテーブル
     @cart_items = CartItem.all
   end
 
   def create
-    @cart_item = CartItem.new
-    
+    @cart_item = CartItem.new(cart_item_params)
     @cart_item.save
-    redirect_to action: "index"
+    redirect_to cart_items_path
   end
 
   def update
-    @cart_items = CartItem
-    redirect_to action: "index"
+    redirect_to cart_items
   end
 
   def destroy
