@@ -28,9 +28,9 @@ class Customer < ApplicationRecord
 
   def is_deleted_text
     if self.is_deleted == false
-      '退会'
-    else
       '有効'
+    else
+      '退会'
     end
   end
 
