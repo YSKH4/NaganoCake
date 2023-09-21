@@ -1,5 +1,7 @@
 class Public::OrdersController < ApplicationController
   def new
+    @order = Oder.new
+    @addresses = Address.
   end
 
   def thanx
