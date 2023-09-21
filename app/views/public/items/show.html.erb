@@ -20,15 +20,19 @@
 <!--おしまい-->
 
 <!--カートに入れるところ-->
-<table>
-  <%=form_with model: @cart_item do |f| %>
+<%=form_with model: @cart_item do |f| %>
+  <table>
     <tr>
       <td>購入数選択</td>
     </tr>
     <tr>
-      <td><%= f.select :amount, *[1..10] %></td>
+      <td>
+        <%= f.select :amount, *[1..10] %>
+        <!--hidden_field-->
+        <%= f.hidden_field :item_id,:value => @item.id %>
+      </td>
       <td><%= f.submit"カートに入れる" %></td>
     </tr>
-  <% end %>
-</table>
+  </table>
+<% end %>
 <!--おしまい-->
