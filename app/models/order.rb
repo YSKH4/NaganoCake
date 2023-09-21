@@ -1,16 +1,19 @@
 class Order < ApplicationRecord
   belongs_to :customer
   has_many :order_details, dependent: :destroy
-  
+  #税込を求めるメソッド
   def  add_tax_price
-   (item.price * 1.10).round
+   (price * 1.1).floor
+  end
+  #小計を求めるメソッド
+  def subtotal
+   item.with_tax_price * amount
   end
   
-  def sum_of_price
-    item.taxin_price * quantity
-  end
+  attribute :last_name, :string
+  attribute :first_name, :string
   
-  def full_name_text
+  def full_name
     "#{last_name}#{first_name}"
   end
   
@@ -20,6 +23,7 @@ class Order < ApplicationRecord
   
   enum payment_method: { transfer: 0, credit_card: 1 }
   enum status: {unpaid: 1, payment_check: 2, in_production: 3, preparing_to_ship: 4, shipped: 5 }
+  # enum making_status: { untouched: 0, waiting_for_production: 1, in_production: 2, production_completed: 3 }
   
   def payment_method_text
      if payment_method == 0

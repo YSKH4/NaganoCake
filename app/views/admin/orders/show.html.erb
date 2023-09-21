@@ -1,14 +1,15 @@
 <h1>注文履歴詳細</h1>
 
 <div>
-  <p>購入者：<%= @order.full_name_text %></p>
+  <p>購入者：<%= @order.full_name %></p>
   <p>注文日：<%= @order.created_at %></p>
   <p>配送先：<%= @order.full_address %></p>
   <p>支払方法：<%= @order.payment_method_text %></p>
-  <%= form_with model: @order,url: admin_orders_path do |f| %>
-  <p>注文ステータス：<%= f.select :status, Order.statuses.keys.to_a, {}, class: 'form-control' %></p>
-    <%= f.submit '新規登録' %>
-  <% end %>
+  <p>注文ステータス：<%= form_with model: @order,url: admin_order_path do |f| %>
+                     <%= f.select :status, Order.statuses.keys.to_a, {}, class: 'form-control' %>
+                     <%= f.submit '更新' %>
+                     <% end %>
+  </p>
 </div>
 
   <table class='table table-hover table-inverse'>
@@ -22,14 +23,24 @@
     </tr>
    </thead>
    <tbody>
-      <% @items.each do |item| %>
+      <% @cart_items.each do |cart_item| %>
       <tr>
-        <td><%= item.name %></td>
-        <td><%=  @total.round.to_s(:delimited) %></td>
-        <td><%= item.amount %></td>
-        <td><%= item.add_tax_price.to_s(:dalimited) %></td>
-        <td><%= item.making_status %></td>
+        <td><%= cart_item.name %></td>
+        <td><%= cart_item.subtotal %></td>
+        <td><%= cart_item.amount %></td>
+        <td><%= cart_item.item.add_tax_price %></td>
+        <td><%= form_with model: @order,url: admin_order_path do |f| %>
+            <%= f.select :making_status, Order.making_statuses.keys.to_a, {}, class: 'form-control' %>
+            <%= f.submit '更新' %>
+            <% end %>
+        </td>
       </tr>
      <% end %>
     </tbody>
    </table>
+   
+   <p><%= cart_item.item.add_tax_price %></p>
+   <p><%= cart_item.subtotal %></p>
+   <p><% @合計金額 +=  cart_item.subtotal %></p>
+   
+   
