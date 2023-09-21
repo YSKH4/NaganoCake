@@ -14,7 +14,11 @@
 
     <!--カートない商品について-->
     <% @cart_items.each do |cart_item| %>
+      <!--くりかえしごとにほしい商品情報をとりだす-->
       <% item = Item.find(cart_item.item_id) %>
+      <!--合計表示用--空の配列に値段を入れていく-->
+      <% @total_amount << (item.price * 1.10).round * cart_item.amount %>
+
       <tr>
         <td><%= item.name %></td>
         <td><%= (item.price * 1.10).round %></td>
@@ -25,5 +29,15 @@
     <% end %>
     <!--おしまい-->
 </table>
+</div>
+
+<div>
+  <%= link_to "買い物を続ける", items_path %>
+  <table border="1">
+    <tr>
+      <td bgcolor="#efefef">合計金額</td>
+      <td><%= @total_amount.sum %></td>
+    </tr>
+  </table>
 </div>
 <!--おしまい-->
