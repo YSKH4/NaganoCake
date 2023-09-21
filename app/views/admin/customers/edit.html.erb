@@ -1,4 +1,4 @@
-  <h4><p><%= @customer.full_name %><P>さんの会員情報編集</h4>
+  <h1><p><%= @customer.full_name %><P>さんの会員情報編集</h1>
   <%= form_with model: @customer,url: admin_customer_path do |f| %>
   
       <p>会員ID <%= @customer.id %></p>
@@ -38,5 +38,5 @@
   　　<%= f.label :is_deleted1, "退会" %>
       <br>
 
- 　　 <%= f.submit "変更を保存" %>
+ 　　　<%= f.submit "変更を保存", class: "btn btn-success" %>
 　　<% end %>
