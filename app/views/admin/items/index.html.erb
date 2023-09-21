@@ -1,4 +1,4 @@
-  <h1>商品一覧</h1>
+  <h4 style="background-color:#d3d3d3">商品一覧</h4>
   
   <div style= 'width: 80% ; margin: 0 auto;' >
   <%= link_to "", new_admin_item_path, class: "fas fa-plus-circle" %>
@@ -32,7 +32,7 @@
    </table>
    </div>
    
-   <div style= 'width: 80% ; margin: 0 auto;' >
+   <div class="row justify-content-center">
      <%= paginate @items %>
    </div>
    
