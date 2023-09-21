@@ -2,7 +2,7 @@ class Public::CartItemsController < ApplicationController
   def index
     @cart_items = CartItem.where(customer_id: current_customer)
     # 空の配列を用意する
-    @total_amount = []
+    @total_amount = [0]
   end
 
   def create
@@ -13,15 +13,20 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
-    redirect_to cart_items
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.update(cart_item_params)
+    redirect_to cart_items_path
   end
 
   def destroy
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.destroy
     redirect_to cart_items_path
   end
 
   def destroy_all
-    @cart_items = CartItem.destroy_all
+    @cart_item = CartItem.where(customer_id: current_customer)
+    @cart_item.destroy_all
     redirect_to items_path
   end
 end

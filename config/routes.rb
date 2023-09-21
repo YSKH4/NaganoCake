@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     post 'orders/comfirm' => 'orders#comfirm'
 
     resources :cart_items, only: [:index, :update, :destroy, :create]
-    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+    delete 'cart_items_destroy_all' => 'cart_items#destroy_all'
 
     get 'customers/mypage' => 'customers#show'
     get 'customers/information/edit' => 'customers#edit'
