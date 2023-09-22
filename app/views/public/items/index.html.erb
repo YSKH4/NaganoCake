@@ -9,7 +9,7 @@
   <table>
     <tr>
       <th><h2>商品一覧</h2></th>
-      <td>(全<%= @items.count %>件)</td>
+      <td>(全<%= @items_count.count %>件)</td>
     </tr>
   </table>
 </div>
@@ -31,5 +31,9 @@
       </tr>
     <% end %>
   </table>
+</div>
+
+<div>
+  <h4><%= paginate @items %></h4>
 </div>
 <!--おしまい-->
