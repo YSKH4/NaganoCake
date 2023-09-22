@@ -43,6 +43,13 @@
   border: 1px solid #ccc; /* 商品のボーダーを追加 */
 }
 
+.hover:hover {
+  /* ホバーエフェクトのスタイルをここに追加 */
+  background-color: lightgray; /* ホバー時の背景色を変更する例 */
+  cursor: pointer; /* マウスカーソルをポインターに変更する例 */
+  /* 他のホバーエフェクトのスタイルを追加できます */
+}
+
 footer {
   height: 100px;
   width: 100%;
