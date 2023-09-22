@@ -28,7 +28,7 @@
           <div class="new_items">
             <span><%= link_to item_path(item) do %><%= image_tag item.get_image(150,150) %><% end %></span><br>
             <span><%= link_to item.name, item_path(item), class: "link" %></span><br>
-            <span>￥<%= item.price %></span>
+            <span>￥<%= (item.price * 1.10).round %></span>
           </div>
          <% end %>
         </div>
