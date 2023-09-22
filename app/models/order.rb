@@ -19,7 +19,7 @@ class Order < ApplicationRecord
   end
   #宛先全ての情報
   def full_address
-    "#{zip_code}#{shipping_address}#{shipping_name}"
+    "#{zip_code} #{shipping_address} \n#{shipping_name}"
   end
   
   #enum
