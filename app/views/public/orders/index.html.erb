@@ -1,21 +1,27 @@
-注文履歴一覧
-<table>
+<h3>注文履歴一覧</h3>
+<table class='table table-hover table-inverse'>
+   <thead>
   <tr>
-    <td>購入日時</td>
-    <td>購入者</td>
-    <td>注文個数</td>
-    <td>注文ステータス</td>
+    <th>注文日</th>
+    <th>配送先</th>
+    <th>注文商品</th>
+    <th>支払金額</th>
+    <th>注文ステータス</th>
+    <th>注文詳細</th>
   </tr>
+  </thead>
+   <tbody>
     <% @orders.each do |order| %>
       <tr>
           <td>
-            <%= link_to  orders_path(order.id) do %>
-              <%=  l order.created_at %>
-            <% end %>
+            <%= order.created_at.strftime('%Y/%m/%d') %>
           </td>
-          <td><%= order.customer.first_name%><%= order.customer.last_name %></td>
-          <td><%= order.order_details.sum(:number) %></td>
+          <td><%= order.shipping_address%></td>
+          <td><%= @ordered_items%></td>
+          <td><%= order.billing_amount %></td>
           <td><%= order.status_i18n %></td>
+          <td><%= link_to "表示する", order_path(order.id), class: "btn btn-sm btn-success" %></td>
       </tr>
     <% end %>
+  </body>
 </table>

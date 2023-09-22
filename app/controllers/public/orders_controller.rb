@@ -21,13 +21,13 @@ class Public::OrdersController < ApplicationController
         @order_details = OrderDetail.new
         @order_details.order_id = order.id
         @order_details.item_id = cart_item.item.id
-        @order_details.unit_price = cart_item.unit_price
+        @order_details.unit_price = cart_item.item.add_tax_price
         @order_details.amount = cart_item.amount
         @order_details.making_status = 0
         @order_details.save!
       end
      CartItem.destroy_all
-     redirect_to orders_thanx4_path
+     redirect_to orders_thanx_path
   end
 
     # CartItem.destroy_all
@@ -37,7 +37,7 @@ class Public::OrdersController < ApplicationController
      @order = Order.new(order_params)
     if params[:order][:select_address] == "0"
       @order.zip_code = current_customer.zip_code
-      @order.shipping_address = current_customer.shipping_address
+      @order.shipping_address = current_customer.address
       @order.shipping_name = current_customer.first_name + current_customer.last_name
     elsif params[:order][:select_address] == "1"
        @address = Address.find(params[:order][:address_id])
@@ -61,10 +61,11 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = Order.all
+    @ordered_items = OrderDetail.all
   end
 
   def show
-    @order_details = OrderDetail.where(order_id: params[:id])
+    @ordered_items = OrderDetail.all
     @order = Order.find(params[:id])
   end
 

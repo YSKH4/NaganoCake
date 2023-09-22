@@ -1,7 +1,7 @@
-<table>
+<table class="table">
   <tr>
     <td>商品名</td>
-    <td>単価</td>
+    <td>単価(税込)</td>
     <td>数量</td>
     <td>小計</td>
   </tr>
@@ -12,8 +12,8 @@
 
     <tr>
       <td>
-        <%= image_tag cart_item.item.get_image(300, 300) %>
-        <%= cart_item.item.name %>
+        <%= image_tag cart_item.item.get_image(100,80) %>
+        <strong><%= cart_item.item.name %></strong>
       </td>
       <td><%= cart_item.item.add_tax_price %></td>
       <td><%= cart_item.amount %></td>]
@@ -38,7 +38,7 @@
   </tr>
 </table>
 
-<table>
+<table class="table">
   <tr>
     <th>支払い方法</th>
     <td><%= @order.payment_method_i18n%></td>
@@ -60,6 +60,6 @@
   <%= f.hidden_field :billing_amount, value: @sum + 800%>
   <%= f.hidden_field :shipping_address, value: @order.shipping_address%>
   <%= f.hidden_field :shipping_name, value: @order.shipping_name %>
-  <%= f.hidden_field :status, value: "wait_payment"%>
-  <%= f.submit "注文を確定する" %>
+  <%= f.hidden_field :status, value: "unpaid"%>
+  <%= f.submit "注文を確定する", class:"btn btn-success" %>
 <% end %>
