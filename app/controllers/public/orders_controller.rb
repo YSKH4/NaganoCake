@@ -14,18 +14,20 @@ class Public::OrdersController < ApplicationController
 
   def create
     order = Order.new(order_params)
-      order.save
+      order.save!
       @cart_items = current_customer.cart_items.all
 
       @cart_items.each do |cart_item|
         @order_details = OrderDetail.new
         @order_details.order_id = order.id
         @order_details.item_id = cart_item.item.id
-        @order_details.price = cart_item.price
-        @order_details.number = cart_item.amount
+        @order_details.unit_price = cart_item.unit_price
+        @order_details.amount = cart_item.amount
         @order_details.making_status = 0
         @order_details.save!
       end
+     CartItem.destroy_all
+     redirect_to orders_thanx4_path
   end
 
     # CartItem.destroy_all
@@ -44,10 +46,14 @@ class Public::OrdersController < ApplicationController
        @order.shipping_name = @address.shipping_name
     elsif params[:order][:select_address] == "2"
       @order.customer_id = current_customer.id
+    else
+      render 'new'
     end
+    
       @cart_items = current_customer.cart_items
       @order_new = Order.new
-      render :confirm
+    
+      # render :confirm
   end
 
   def thanx
