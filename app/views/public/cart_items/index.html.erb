@@ -1,28 +1,30 @@
 <!--カートないアイテム-->
-<div>
-  <div>
-    ショッピングカート
+<div class="container">
+
+
+  <div class="row" style="margin:15px 0 ;">
+    <div class="col-4" >
+      ショッピングカート
+    </div>
+
+    <div class="col-8 text-right">
+      <% if @cart_items.exists? %>
+        <%= link_to "カートを空にする", cart_items_destroy_all_path, class: "btn btn-danger", method: :delete, "data-confirm" => "本当に空にしますか？" %>
+      <% end %>
+    </div>
   </div>
 
-  <div>
+
+  <div style="margin-bottom: 10px ;">
     <% if @cart_items.exists? %>
-      <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, "data-confirm" => "本当に空にしますか？" %>
-    <% end %>
-  </div>
-</div>
-
-
-<div>
-  <% if @cart_items.exists? %>
-    <div>
       <table border="1">
         <!--テーブルトップ-->
         <tr bgcolor="#efefef">
-          <td>商品名</td>
-          <td>単価（税込）</td>
-          <td>数量</td>
-          <td>小計</td>
-          <td></td>
+          <td width="25%">商品名</td>
+          <td width="10%">単価（税込）</td>
+          <td width="10%">数量</td>
+          <td width="10%">小計</td>
+          <td width="10%"></td>
         </tr>
         <!--おしまい-->
 
@@ -41,48 +43,47 @@
             <td>
               <%=form_with model: cart_item do |f| %>
                 <%= f.select :amount, *[1..10] %>
-                <%= f.submit"変更" %>
+                <%= f.submit"変更", class: "btn btn-success" %>
               <% end %>
             </td>
 
             <td><%= ((item.price * 1.10).round * cart_item.amount).to_s(:delimited) %></td>
 
-            <td><%= link_to "削除する",cart_item_path(cart_item.id), method: :delete %></td>
+            <td><%= link_to "削除する",cart_item_path(cart_item.id), class: "btn btn-danger", method: :delete %></td>
           </tr>
         <% end %>
         <!--おしまい-->
       </table>
+    <% else %>
+      <h1>カート内の商品はありません</h1>
+    <% end %>
+  </div>
+
+
+  <div class="row">
+    <div class="col-4">
+      <%= link_to "買い物を続ける", items_path, class: "btn btn-primary" %>
     </div>
 
-  <% else %>
-    <div>
-      <h1>
-        カート内の商品はありません
-      </h1>
+    <div class="col-8 row justify-content-end">
+      <% if @cart_items.exists? %>
+        <table border="1">
+          <tr>
+            <td bgcolor="#efefef">合計金額</td>
+            <td><%= (@total_amount.sum).to_s(:delimited) %></td>
+          </tr>
+        </table>
+      <% end %>
     </div>
-  <% end %>
-</div>
+  </div>
 
-
-
-<div>
-  <%= link_to "買い物を続ける", items_path %>
-</div>
-
-<div>
-  <% if @cart_items.exists? %>
-    <table border="1">
-      <tr>
-        <td bgcolor="#efefef">合計金額</td>
-        <td><%= (@total_amount.sum).to_s(:delimited) %></td>
-      </tr>
-    </table>
-  <% end %>
-</div>
-
-<div>
-  <% if @cart_items.exists? %>
-    <%= link_to "情報入力に進む" ,new_order_path %>
-  <% end %>
+  <div class="row" style="margin:40px 0 ;" >
+    <div class="col-12 text-center">
+      <% if @cart_items.exists? %>
+        <%= link_to "情報入力に進む" ,new_order_path, class: "btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
 </div>
 <!--おしまい-->
+
