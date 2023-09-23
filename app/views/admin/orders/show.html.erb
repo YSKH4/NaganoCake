@@ -30,7 +30,7 @@
         <td><%= order_detail.item.name %></td>
         <td><%= order_detail.unit_price %></td>
         <td><%= order_detail.amount %></td>
-        <td><%= order_detail.item.subtotal %></td>
+        <td><%= order_detail.subtotal %></td>
         <td><%= form_with model: @order,url: admin_order_path do |f| %>
             <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
             <%= f.submit '更新' %>
@@ -48,9 +48,9 @@
     <% @order_details.each do |order_detail| %>
     <% total_price += order_detail.unit_price*order_detail.amount %> <!-- total_amountを更新 -->
     <% end %>
-    <p>合計金額: <%= total_price %></p>
-    <p>送料：<%= @order_details.first.postage %></p>
-    <p>請求金額：<%= @order_details.first.billing_amount %></p>
+    <p>合計金額: <%= total_price %>円</p>
+    <p>送料：<%= @order.postage %>円</p>
+    <p>請求金額：<%= @order.billing_amount %>円</p>
   <% else %>
     <p>注文詳細データが存在しません</p>
   <% end %>

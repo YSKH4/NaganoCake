@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 2023_09_21_074247) do
     t.string "name", null: false
     t.text "caption", null: false
     t.integer "price", null: false
-    t.boolean "is_active", default: true, null: false
+    t.boolean "is_active", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -116,11 +116,11 @@ ActiveRecord::Schema.define(version: 2023_09_21_074247) do
   end
 
   create_table "order_details", force: :cascade do |t|
-    t.integer "order_id"
-    t.integer "item_id"
-    t.integer "amount"
-    t.integer "unit_price"
-    t.integer "making_status"
+    t.integer "order_id", null: false
+    t.integer "item_id", null: false
+    t.integer "amount", null: false
+    t.integer "unit_price", null: false
+    t.integer "making_status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
