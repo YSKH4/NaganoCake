@@ -1,4 +1,6 @@
 class Public::CartItemsController < ApplicationController
+  before_action :authenticate_customer!
+
   def index
     @cart_items = CartItem.where(customer_id: current_customer)
     # 空の配列を用意する
@@ -29,6 +31,13 @@ class Public::CartItemsController < ApplicationController
     @cart_item.destroy_all
     redirect_to cart_items_path
   end
+
+  # def is_matching_login_customer
+  #   current_customer = Customer.find(params[:id])
+  #   unless customer.id == current_customer.id
+  #     redirect_to  customer_session_path
+  #   end
+  # end
 
   private
 
