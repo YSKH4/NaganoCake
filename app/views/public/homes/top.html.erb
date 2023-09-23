@@ -1,2 +1,42 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+
+<div class="container p-2">
+  <div class= "row">
+  <div class= "col-md-3 mt-5">
+    <!--ジャンル一覧renderを記載する-->
+    <%= render 'public/items/genre_list', genres: @genres %>
+  </div>
+  <div class="col-md-8 offset-md-1">
+    <div class="image-container mx-auto mt-5 mb-5">
+      <%= image_tag 'top_cake.jpg', alt: 'Image', class: "img-fluid w-80 h-60 mx-auto d-block" %>
+      <div class="main-text">
+        <div class="text-content">
+          <h4>ようこそ、ながのCAKEへ！</h4>
+          <p>このサイトは、ケーキ販売のECサイトになります。</p>
+          <p>会員でない方も商品の閲覧はできますが、</p>
+          <p>購入には会員登録が必要になります</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <h2>新着商品</h2>
+    </div>
+    <div class="row">
+      <div class="col mr-1">
+        <!--新着商品。items controllerにstrong parameter記載されていれば動くはず-->
+        <div class="new_items_container">
+         <% @items.each do |item| %>
+          <div class="new_items">
+            <span><%= link_to item_path(item) do %><%= image_tag item.get_image(150,150) %><% end %></span><br>
+            <span><%= link_to item.name, item_path(item), class: "link" %></span><br>
+            <span>￥<%= item.price %></span>
+          </div>
+         <% end %>
+        </div>
+      </div>
+    </div>
+     <div class="d-flex mt-2 justify-content-end">
+       <%= link_to "すべての商品を見る", items_path, class: "link" %>
+     </div>
+  </div>
+  </div>
+</div>

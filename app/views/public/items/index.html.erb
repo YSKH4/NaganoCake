@@ -1,2 +1,39 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<!--ジャンル一覧（ジャンル検索機能-->
+<div>
+  <%= render "genre_list", genres: @genres %>
+</div>
+<!--おしまい-->
+
+<!--商品一覧タイトル-->
+<div>
+  <table>
+    <tr>
+      <th><h2>商品一覧</h2></th>
+      <td>(全<%= @items_count.count %>件)</td>
+    </tr>
+  </table>
+</div>
+
+<!--おしまい-->
+
+<!--商品一覧-->
+<div>
+  <table>
+    <% @items.each do |item| %>
+      <tr>
+        <td>
+          <%= link_to item_path(item.id) do %>
+            <%= image_tag item.get_image(125,125) %><br>
+            <%= item.name %><br>
+            ¥<%= ((item.price * 1.10).round).to_s(:delimited) %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<div>
+  <h4><%= paginate @items %></h4>
+</div>
+<!--おしまい-->

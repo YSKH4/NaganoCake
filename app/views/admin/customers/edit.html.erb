@@ -1,2 +1,44 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+  <div style= 'width: 80% ; margin: 0 auto;' >
+  <h4 style="background-color:#d3d3d3"><%= @customer.full_name %>さんの会員情報編集</h4>
+
+  <%= form_with model: @customer,url: admin_customer_path do |f| %>
+
+      <p>会員ID <%= @customer.id %></p>
+      <br>
+
+  　　<label for="inputFullNameKana">氏名</label>
+  　　<%= f.text_field :last_name, autofocus: true, id:"inputLastName", placeholder:"姓" %>
+  　　<%= f.text_field :first_name, autofocus: true, id:"inputFirstName", placeholder:"名" %>
+  　　<br>
+
+  　　<label for="inputFullNameKana">フリガナ</label>
+  　　<%= f.text_field :last_name_kana, autofocus: true, id:"inputLastNameKana", placeholder:"セイ" %>
+  　　<%= f.text_field :first_name_kana, autofocus: true, id:"inputFirstNameKana", placeholder:"メイ" %>
+  　　<br>
+
+  　　<label for="inputZipcode">郵便番号</label>
+  　　<%= f.text_field :zip_code, autofocus: true, id:"inputZipcode", placeholder:"郵便番号" %>
+  　　<br>
+
+  　　<label for="inputAddress">住所</label>
+  　　<%= f.text_field :address, autofocus: true, id:"inputAddress", placeholder:"住所" %>
+  　　<br>
+
+  　　<label for="inputTelphoneNumber">電話番号</label>
+  　　<%= f.text_field :telephone_number, autofocus: true, id:"inputTelphoneNumber", placeholder:"電話番号" %>
+  　　<br>
+
+
+  　　<label for="inputEmail">メールアドレス</label>
+  　　<%= f.text_field :email, autofocus: true, id:"inputEmail", placeholder:"メールアドレス" %>
+  　　<br>
+
+  　　<label for="inputIsDeleted">会員ステータス</label>
+  　　<%= f.radio_button :is_deleted, false, autofocus: true, id: "inputIsDeleted0" %>
+  　　<%= f.label :is_deleted0, "有効" %>
+  　　<%= f.radio_button :is_deleted, true, autofocus: true, id: "inputIsDeleted1" %>
+  　　<%= f.label :is_deleted1, "退会" %>
+      <br>
+
+ 　　　<%= f.submit "変更を保存", class: "btn btn-success" %>
+　　<% end %>
