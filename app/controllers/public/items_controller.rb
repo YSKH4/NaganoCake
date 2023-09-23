@@ -9,6 +9,9 @@ class Public::ItemsController < ApplicationController
       @items_count = Item.where(genre_id: @genre_id)
       @items = Item.where(genre_id: @genre_id).page(params[:page]).per(8)
     #なければ全てとりだす
+    elsif item_name = params[:item_name]
+      @items_count = Item.where("name LIKE ?","%"+ item_name + "%")
+      @items = Item.where("name LIKE ?","%"+ item_name + "%").page(params[:page]).per(8)
     else
       @items_count = Item.all
       @items = Item.all.page(params[:page]).per(8)

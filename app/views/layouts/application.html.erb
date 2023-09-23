@@ -47,9 +47,17 @@
           </div>
           </div>
 
-          <% if customer_signed_in? %>
-            <p class="m-1">ようこそ、<%= current_customer.last_name %> 様</p>
-          <% end %>
+          <div class="row">
+            <div class="col-5 ">
+              <% if customer_signed_in? %>
+                <p class="m-1">ようこそ、<%= current_customer.last_name %> 様</p>
+              <% end %>
+            </div>
+
+            <div class="col-7 text-right">
+              <%= render "layouts/search" %>
+            </div>
+          </div>
           <!--</div>-->
         </div>
       </nav>
