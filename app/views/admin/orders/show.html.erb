@@ -7,7 +7,7 @@
   <p>配送先：<%= @order.full_address %></p>
   <p>支払方法：<%= @order.payment_method_text %></p>
   <p>注文ステータス：<%= form_with model: @order,url: admin_order_path do |f| %>
-                     <%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
+                     <%= f.select :status, Order.statuses_i18n.invert %>
                      <%= f.submit '更新' %>
                      <% end %>
   </p>
@@ -31,8 +31,8 @@
         <td><%= order_detail.unit_price %></td>
         <td><%= order_detail.amount %></td>
         <td><%= order_detail.subtotal %></td>
-        <td><%= form_with model: @order,url: admin_order_path do |f| %>
-            <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
+        <td><%= form_with model: order_detail,url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
+            <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
             <%= f.submit '更新' %>
             <% end %>
         </td>
