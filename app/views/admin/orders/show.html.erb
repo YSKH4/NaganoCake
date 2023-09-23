@@ -41,9 +41,14 @@
     </tbody>
    </table>
    </div>
+   
    <div class="col-6">
   <% if @order_details.present? %>
-    <p>合計金額: <%= @合計金額 %></p>
+    <% total_price = 0 %> <!-- total_priceを初期化 -->
+    <% @order_details.each do |order_detail| %>
+    <% total_price += order_detail.unit_price*order_detail.amount %> <!-- total_amountを更新 -->
+    <% end %>
+    <p>合計金額: <%= total_price %></p>
     <p>送料：<%= @order_details.first.postage %></p>
     <p>請求金額：<%= @order_details.first.billing_amount %></p>
   <% else %>
