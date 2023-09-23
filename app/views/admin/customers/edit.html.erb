@@ -1,4 +1,6 @@
-  <h1><p><%= @customer.full_name %><P>さんの会員情報編集</h1>
+  <div style= 'width: 80% ; margin: 0 auto;' >
+  <h4 style="background-color:#d3d3d3"><%= @customer.full_name %>さんの会員情報編集</h4>
+
   <%= form_with model: @customer,url: admin_customer_path do |f| %>
 
       <p>会員ID <%= @customer.id %></p>
