@@ -24,7 +24,7 @@ class Order < ApplicationRecord
   
  #enum
  enum payment_method: { transfer: 0, credit_card: 1 }
- enum status: {unpaid: 1, payment_check: 2, in_production: 3, preparing_to_ship: 4, shipped: 5 }
+ enum status: {unpaid: 0, payment_check: 1, in_production: 2, preparing_to_ship: 3, shipped: 4 }
   
  #支払方法
  def payment_method_text

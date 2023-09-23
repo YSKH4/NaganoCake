@@ -23,7 +23,7 @@ class Public::OrdersController < ApplicationController
         @order_details.item_id = cart_item.item.id
         @order_details.unit_price = cart_item.item.add_tax_price
         @order_details.amount = cart_item.amount
-        @order_details.making_status = 0
+        # @order_details.making_status = 0
         @order_details.save!
       end
      CartItem.destroy_all
@@ -65,8 +65,10 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @ordered_items = OrderDetail.all
     @order = Order.find(params[:id])
+    @ordered_items = @order.order_details.all
+    
+     @total_amount = 0
   end
 
 

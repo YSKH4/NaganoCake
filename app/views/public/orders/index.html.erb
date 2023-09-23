@@ -16,8 +16,18 @@
           <td>
             <%= order.created_at.strftime('%Y/%m/%d') %>
           </td>
-          <td><%= order.shipping_address%></td>
-          <td><%= @ordered_items%></td>
+          <td>
+            <%= order.zip_code%><br>
+            <%= order.shipping_address%><br>
+            <%= order.shipping_name%>
+          </td>
+           <td>
+        <!--<ul class="list-unstyled">-->
+            <% order.order_details.each do |order_detail|  %>
+              <%= order_detail.item.name %>
+            <% end %>
+        <!--</ul>-->
+          </td>
           <td><%= order.billing_amount %></td>
           <td><%= order.status_i18n %></td>
           <td><%= link_to "表示する", order_path(order.id), class: "btn btn-sm btn-success" %></td>
