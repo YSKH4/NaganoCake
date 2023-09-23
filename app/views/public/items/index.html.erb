@@ -9,7 +9,7 @@
   <table>
     <tr>
       <th><h2>商品一覧</h2></th>
-      <td>(全<%= Item.count %>件)</td>
+      <td>(全<%= @items_count.count %>件)</td>
     </tr>
   </table>
 </div>
@@ -25,11 +25,15 @@
           <%= link_to item_path(item.id) do %>
             <%= image_tag item.get_image(125,125) %><br>
             <%= item.name %><br>
-            <%= (item.price * 1.10).round %>
+            ¥<%= ((item.price * 1.10).round).to_s(:delimited) %>
           <% end %>
         </td>
       </tr>
     <% end %>
   </table>
+</div>
+
+<div>
+  <h4><%= paginate @items %></h4>
 </div>
 <!--おしまい-->

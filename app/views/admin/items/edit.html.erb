@@ -1,35 +1,60 @@
 
+<<<<<<< HEAD
   <h4 style="background-color:#d3d3d3">商品編集</h4>
+=======
+>>>>>>> origin/develop
     <div style= 'width: 80% ; margin: 0 auto;' >
+    <h4 style="background-color:#d3d3d3">商品編集</h4>
 　　<%= form_with model: @item,url: admin_item_path do |f| %>
     
-  　　<label for="inputName">商品名</label>
-  　　<%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"商品名"%>
-  　　<br>
-  　　
-  　　<label for="inputImage">商品画像</label>
-  　　<%= f.file_field :image, placeholder: "商品画像", accept: "image/*" %> 
-  　　<br>
-  　　
-  　　<label for="inputCaption">商品説明</label>
-  　　<%= f.text_field :caption, autofocus: true, id:"inputCaption", placeholder:"ここに説明文を記述します"%>
-  　　<br>
-  　　
-  　　<label for="inputGenreName">ジャンル</label>
-  　　<%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :genre_display), autofocus: true, id:"inputGenreName" %>
-      <br>
-  　　
-  　　<label for="inputPrice">税抜価格</label>
-  　　<%= f.text_field :price, autofocus: true, id:"inputPrice", placeholder:"1000"%>円
-  　　<br>
-  　　
-  　　<label for="inputIs_active0">販売ステータス</label>
-  　　<%= f.radio_button :is_active, true, autofocus: true, id: "inputIs_active0" %>
+　  <div class="form-group row">
+    <label for="inputName" class="col-sm-2 col-form-label">商品名</label>
+    <div class="col-sm-10">
+      <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"商品名"%>
+    </div>
+  </div>
+    
+     <div class="form-group row">
+    <label for="inputImamge" class="col-sm-2 col-form-label">商品画像</label>
+    <div class="col-sm-10">
+      <%= f.file_field :image, placeholder: "商品画像", accept: "image/*" %>
+    </div>
+  </div>
+  
+     <div class="form-group row">
+    <label for="inputCaption" class="col-sm-2 col-form-label">商品説明</label>
+    <div class="col-sm-10">
+      <%= f.text_field :caption, autofocus: true, id:"inputCaption", placeholder:"ここに説明文を記述します"%>
+    </div>
+  </div>
+    
+     <div class="form-group row">
+    <label for="inputGenre" class="col-sm-2 col-form-label">ジャンル</label>
+    <div class="col-sm-10">
+      <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :genre_display), autofocus: true, id:"inputGenreName" %>
+    </div>
+  </div>
+    
+     <div class="form-group row">
+    <label for="inputPrice" class="col-sm-2 col-form-label">税抜価格</label>
+    <div class="col-sm-10">
+      <%= f.text_field :price, autofocus: true, id:"inputPrice", placeholder:"1000"%>円
+    </div>
+  </div>
+    
+    <div class="form-group row">
+    <label for="inputIs_active" class="col-sm-2 col-form-label">販売ステータス</label>
+    <div class="col-sm-10">
+      <%= f.radio_button :is_active, true, autofocus: true, id: "inputIs_active0" %>
   　　<%= f.label :is_active0, "販売中" %>
   　　<%= f.radio_button :is_active, false, autofocus: true, id: "inputIs_active1" %>
   　　<%= f.label :is_active1, "販売停止中" %>
-      <br>
-
- 　　<%= f.submit "変更を保存", class: "btn btn-success" %>
+    </div>
+  </div> 　　
+  
+       <%= f.submit "変更を保存", class: "btn btn-success" %>
 　　<% end %>
 　  </div>
+  
+  
+   
