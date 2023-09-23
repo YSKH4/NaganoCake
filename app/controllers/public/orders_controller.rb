@@ -71,18 +71,26 @@ class Public::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @ordered_items = @order.order_details.all
     @total_amount = 0
-    order = Order.find(params[:id])
-    unless order.customer.id == order.current_customer.id
-      redirect_to new_customer_session_path
-    end
+    
   end
 
 
   private
 
-  def order_params
+  def order_paramscd
     params.require(:order).permit(:payment_method, :zip_code, :shipping_address, :shipping_name, :postage, :billing_amount, :customer_id , :status)
   end
 
-
+  def is_matching_login_customer
+    order = Order.find(params[:id])
+    unless order.customer.id == current_customer.id
+      redirect_to root_path
+    end
+  end
+  #   def is_matching_login_user
+  #   user = User.find(params[:id])
+  #   unless user.id == current_user.id
+  #     redirect_to post_images_path
+  #   end
+  # end
 end
