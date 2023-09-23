@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
+  before_action :is_matching_login_customer, only: [:show]
   # before_action :cartitem_nill,   only: [:new, :create]
   #   def cartitem_nill
   #   cart_items = current_end_user.cart_items
@@ -49,10 +51,10 @@ class Public::OrdersController < ApplicationController
     else
       render 'new'
     end
-    
+
       @cart_items = current_customer.cart_items
       @order_new = Order.new
-    
+
       # render :confirm
   end
 
@@ -60,15 +62,19 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = current_customer.orders.all
+    # @orders = Order.all
     @ordered_items = OrderDetail.all
   end
 
   def show
     @order = Order.find(params[:id])
     @ordered_items = @order.order_details.all
-    
-     @total_amount = 0
+    @total_amount = 0
+    order = Order.find(params[:id])
+    unless order.customer.id == order.current_customer.id
+      redirect_to new_customer_session_path
+    end
   end
 
 
