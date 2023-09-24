@@ -25,14 +25,14 @@
         <!--おしまい-->
 
         <!--カートに入れるところ-->
-        <%=form_with model: @cart_item, url: item_id, method: :get,  do |f| %>
+        <%=form_with model: @cart_item do |f| %>
           <table>
             <tr>
               <td>購入数選択</td>
             </tr>
             <tr>
               <td>
-                <%= f.select :amount, *[1..10] %>
+                <%= f.select :amount, *[1..20] %>
                 <!--hidden_field-->
                 <%= f.hidden_field :item_id,:value => @item.id %>
               </td>

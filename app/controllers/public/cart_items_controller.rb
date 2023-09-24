@@ -23,10 +23,15 @@ class Public::CartItemsController < ApplicationController
 
   def create
     @cart_item = CartItem.new(cart_item_params)
-    if
-      redirect_to items_path
+    @cart_item.customer = current_customer
+    @cart_items = CartItem.find_by(item_id: @cart_item.item_id)
+    if @cart_items
+      @cart_item.amount = @cart_item.amount + @cart_items.amount
+      @cart_item.save
+      @cart_items.destroy
+      redirect_to cart_items_path
     else
-      @cart_item.customer = current_customer
+
       @cart_item.save
       redirect_to cart_items_path
     end
