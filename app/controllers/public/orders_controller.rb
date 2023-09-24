@@ -49,6 +49,7 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:select_address] == "2"
       @order.customer_id = current_customer.id
     else
+      @addresses = Address.all
       render 'new'
     end
 
@@ -77,7 +78,7 @@ class Public::OrdersController < ApplicationController
 
   private
 
-  def order_paramscd
+  def order_params
     params.require(:order).permit(:payment_method, :zip_code, :shipping_address, :shipping_name, :postage, :billing_amount, :customer_id , :status)
   end
 
