@@ -36,13 +36,17 @@
         <% @total_amount << (item.price * 1.10).round * cart_item.amount %>
 
           <tr>
-            <td><%= item.name %></td>
+            <td><%= image_tag item.get_image(100,100) %><%= item.name %></td>
 
             <td><%= (item.price * 1.10).round.to_s(:delimited) %></td>
 
             <td>
               <%=form_with model: cart_item do |f| %>
-                <%= f.select :amount, *[1..10] %>
+                <% if cart_item.amount < 20%>
+                  <%= f.select :amount, *[1..20] %>
+                <% else %>
+                  <%= f.select :amount, *[1..((cart_item.amount + 20).floor(-1))] %>
+                <% end %>
                 <%= f.submit"変更", class: "btn btn-success" %>
               <% end %>
             </td>
@@ -62,7 +66,7 @@
 
   <div class="row">
     <div class="col-4">
-      <%= link_to "買い物を続ける", items_path, class: "btn btn-primary" %>
+      <%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
     </div>
 
     <div class="col-8 row justify-content-end">

@@ -24,14 +24,18 @@
             <p class="text-secondary , font-weight-bold"><%= item.is_active_text %></p>
             <% end %>
         </td>
-        <td><%= link_to 'Destroy', admin_item_path(item.id), method: :delete, data: { confirm: "本当に消しますか?" }, class: "btn btn-sm btn-danger" %></td>
+        <!--<td><%#= link_to 'Destroy', admin_item_path(item.id), method: :delete, data: { confirm: "本当に消しますか?" }, class: "btn btn-sm btn-danger" %></td>-->
       </tr>
      <% end %>
     </tbody>
    </table>
    </div>
+<<<<<<< HEAD
    
    <div class="row justify-content-center">
+=======
+
+   <div style= 'width: 80% ; margin: 0 auto;' >
+>>>>>>> origin/develop
      <%= paginate @items %>
    </div>
-   
