@@ -63,7 +63,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #before_action :configure_customer_update_parameters, if: :devise_controller? #編集機能について
 
   def after_sign_in_path_for(resource)
-    root_path
+    customers_mypage_path
   end
 
   def after_sign_out_path_for(resource)

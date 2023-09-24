@@ -36,7 +36,7 @@
         <% @total_amount << (item.price * 1.10).round * cart_item.amount %>
 
           <tr>
-            <td><%= item.name %></td>
+            <td><%= image_tag item.get_image(100,100) %><%= item.name %></td>
 
             <td><%= (item.price * 1.10).round.to_s(:delimited) %></td>
 
@@ -66,7 +66,7 @@
 
   <div class="row">
     <div class="col-4">
-      <%= link_to "買い物を続ける", items_path, class: "btn btn-primary" %>
+      <%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
     </div>
 
     <div class="col-8 row justify-content-end">
