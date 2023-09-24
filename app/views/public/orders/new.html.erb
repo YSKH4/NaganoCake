@@ -4,6 +4,10 @@
    
 <h3>注文情報入力</h3>   
 
+<div>
+  <%= flash[:notice] %>
+</div>
+
 <%= form_with model: @order, url: '/orders/confirm' , local: true do |f| %>
 
   <h4>支払い方法</h4>
