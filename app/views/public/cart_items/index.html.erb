@@ -42,7 +42,11 @@
 
             <td>
               <%=form_with model: cart_item do |f| %>
-                <%= f.select :amount, *[1..10] %>
+                <% if cart_item.amount < 20%>
+                  <%= f.select :amount, *[1..20] %>
+                <% else %>
+                  <%= f.select :amount, *[1..((cart_item.amount + 20).floor(-1))] %>
+                <% end %>
                 <%= f.submit"変更", class: "btn btn-success" %>
               <% end %>
             </td>
