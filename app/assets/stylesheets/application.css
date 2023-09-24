@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+ header, main, footer {
+   font-family: "Shippori Mincho",serif;
+ }
 
 .image-container {
   position: relative; /* 相対位置指定 */
@@ -41,6 +44,13 @@
   width: calc(33.33% - 20px); /* 横に並べる要素の幅を設定 */
   padding: 10px; /* 商品の周りに余白を追加 */
   border: 1px solid #ccc; /* 商品のボーダーを追加 */
+}
+
+.hover:hover {
+  /* ホバーエフェクトのスタイルをここに追加 */
+  background-color: lightgray; /* ホバー時の背景色を変更する例 */
+  cursor: pointer; /* マウスカーソルをポインターに変更する例 */
+  /* 他のホバーエフェクトのスタイルを追加できます */
 }
 
 footer {
