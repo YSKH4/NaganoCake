@@ -25,7 +25,7 @@
         <!--おしまい-->
 
         <!--カートに入れるところ-->
-        <%=form_with model: @cart_item do |f| %>
+        <%=form_with model: @cart_item, url: item_id, method: :get,  do |f| %>
           <table>
             <tr>
               <td>購入数選択</td>
