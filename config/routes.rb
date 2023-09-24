@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   namespace :admin do
-    
+
      get '/' => "homes#top"
-     
+
     resources :orders,only: [:show, :update]
-    
+
     patch 'order_details/:id' =>'order_details#update',as: 'order_detail'
 
     resources :customers, only: [:index, :show, :edit, :update]
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :addresses,only: [:index, :edit, :create, :update, :destroy]
 
-   
+
     get 'orders/thanx' => 'orders#thanx'
     post 'orders/confirm' => 'orders#confirm'
     resources :orders, only: [:new, :create, :index, :show]
