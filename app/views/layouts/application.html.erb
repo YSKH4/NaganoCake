@@ -11,6 +11,10 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&display=swap" rel="stylesheet">
+
   </head>
 
   <body class ="d-flex flex-column vh-100">
@@ -18,7 +22,7 @@
       <nav class="navbar-nav">
         <div class="container">
           <div class="row">
-          <a class="navbar-brand mr-auto" href="/"><span>Logo</span></a>
+          <a class="navbar-brand mr-auto" href="/"><span><%= image_tag 'logo-sample3.jpg', size:'200x60'%></span></a>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -26,17 +30,25 @@
           <!--<div class="collapse navbar-collapse" id="navbarNavDropdown">-->
           <div class="row">
             <ul class="navbar-nav ml-auto d-flex flex-row">
-            <% if customer_signed_in? %>
+
+            <% if admin_signed_in? %>
+              <% if request.fullpath.include? "/admin" %> <!--admin側のheader-->
+                <li class="nav-item"><%= link_to "商品一覧", admin_items_path, class: 'btn btn-light nav-link ml-2' %></li>
+                <li class="nav-item"><%= link_to "会員一覧", admin_customers_path, class: 'btn btn-light nav-link ml-2' %></li>
+                <li class="nav-item"><%= link_to "注文履歴一覧", admin_path, class: 'btn btn-light nav-link ml-2'%></li>
+                <li class="nav-item"><%= link_to "ジャンル一覧", admin_genres_path, class: 'btn btn-light nav-link ml-2'%></li>
+                <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-light nav-link ml-2' %></li>
+              <% else %> <!--customer側のheader-->
               <li class="nav-item"><%= link_to "マイページ", customers_mypage_path, class: 'btn btn-light nav-link ml-2' %></li>
               <li class="nav-item"><%= link_to "商品一覧", items_path, class: 'btn btn-light nav-link ml-2' %></li>
               <li class="nav-item"><%= link_to "カート", cart_items_path, class: 'btn btn-light nav-link ml-2'%></li>
               <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'btn btn-light nav-link ml-2' %></li>
-            <% elsif admin_signed_in? %>
-              <li class="nav-item"><%= link_to "商品一覧", admin_items_path, class: 'btn btn-light nav-link ml-2' %></li>
-              <li class="nav-item"><%= link_to "会員一覧", admin_customers_path, class: 'btn btn-light nav-link ml-2' %></li>
-              <li class="nav-item"><%= link_to "注文履歴一覧", admin_path, class: 'btn btn-light nav-link ml-2'%></li>
-              <li class="nav-item"><%= link_to "ジャンル一覧", admin_genres_path, class: 'btn btn-light nav-link ml-2'%></li>
-              <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-light nav-link ml-2' %></li>
+              <% end %>
+            <% elsif customer_signed_in? %>
+              <li class="nav-item"><%= link_to "マイページ", customers_mypage_path, class: 'btn btn-light nav-link ml-2' %></li>
+              <li class="nav-item"><%= link_to "商品一覧", items_path, class: 'btn btn-light nav-link ml-2' %></li>
+              <li class="nav-item"><%= link_to "カート", cart_items_path, class: 'btn btn-light nav-link ml-2'%></li>
+              <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'btn btn-light nav-link ml-2' %></li>
             <% else %>
               <li class="nav-item"><%= link_to "About", homes_about_path, class: 'btn btn-light nav-link ml-2' %></li>
               <li class="nav-item"><%= link_to "商品一覧", items_path, class: 'btn btn-light nav-link ml-2' %></li>
@@ -47,9 +59,17 @@
           </div>
           </div>
 
-          <% if customer_signed_in? %>
-            <p class="m-1">ようこそ、<%= current_customer.last_name %> 様</p>
-          <% end %>
+          <div class="row">
+            <div class="col-5 ">
+              <% if customer_signed_in? %>
+                <p class="m-1">ようこそ、<%= current_customer.last_name %> 様</p>
+              <% end %>
+            </div>
+
+            <div class="col-7 text-right">
+              <%= render "layouts/search" %>
+            </div>
+          </div>
           <!--</div>-->
         </div>
       </nav>

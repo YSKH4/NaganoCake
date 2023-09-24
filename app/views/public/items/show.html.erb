@@ -1,38 +1,53 @@
-<!--ジャンル一覧（ジャンル検索機能-->
-<div>
-  <%= render "genre_list", genres: @genres %>
-</div>
-<!--おしまい-->
 
-<!--商品詳細-->
-<div>
-  <table>
-    <tr>
-      <td><%= image_tag @item.get_image(150,150) %></td>
-      <td>
-        <strong><%= @item.name %></strong><br>
-        <%= @item.caption %><br>
-        <%= (@item.price * 1.10).round %>
-      </td>
-    </tr>
-  </table>
-</div>
-<!--おしまい-->
+<div class="container p-2">
+  <div class= "row">
+    <div class= "col-md-3 mt-5">
+      <!--ジャンル一覧（ジャンル検索機能-->
+      <%= render "genre_list", genres: @genres %>
+      <!--おしまい-->
+    </div>
 
-<!--カートに入れるところ-->
-<%=form_with model: @cart_item do |f| %>
-  <table>
-    <tr>
-      <td>購入数選択</td>
-    </tr>
-    <tr>
-      <td>
-        <%= f.select :amount, *[1..10] %>
-        <!--hidden_field-->
-        <%= f.hidden_field :item_id,:value => @item.id %>
-      </td>
-      <td><%= f.submit"カートに入れる" %></td>
-    </tr>
-  </table>
-<% end %>
-<!--おしまい-->
+    <div class="col-md-8 offset-md-1">
+      <div class="image-container mx-auto mt-5 mb-5">
+        <!--商品詳細-->
+        <div class="text-left">
+          <table>
+            <tr>
+              <td><%= image_tag @item.get_image(150,150) %></td>
+              <td>
+                <strong><%= @item.name %></strong><br>
+                <%= @item.caption %><br>
+                ¥<%= (@item.price * 1.10).round %>(税込)
+              </td>
+            </tr>
+          </table>
+        </div>
+        <!--おしまい-->
+
+        <!--カートに入れるところ-->
+        <%=form_with model: @cart_item do |f| %>
+          <table>
+            <tr>
+              <td>購入数選択</td>
+            </tr>
+            <tr>
+              <td>
+                <%= f.select :amount, *[1..20] %>
+                <!--hidden_field-->
+                <%= f.hidden_field :item_id,:value => @item.id %>
+              </td>
+              <td><%= f.submit"カートに入れる" %></td>
+            </tr>
+          </table>
+        <% end %>
+        <!--おしまい-->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

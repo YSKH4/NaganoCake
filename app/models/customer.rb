@@ -13,8 +13,8 @@ class Customer < ApplicationRecord
   validates :last_name_kana, presence: true
   validates :first_name_kana, presence: true
   validates :email, presence: true
-  validates :zip_code, presence: true
-  validates :address, presence: true
+  validates :zip_code, presence: true, length: { in: 3..7 }
+  validates :address, presence: true, length: { maximum: 50 }
   validates :telephone_number, presence: true
 
   def full_name
