@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+ header, main, footer {
+   font-family: "Shippori Mincho",serif;
+ }
 
 .image-container {
   position: relative; /* 相対位置指定 */
