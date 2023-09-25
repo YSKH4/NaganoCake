@@ -73,13 +73,13 @@ footer {
 .button-81 {
   background-color: #fff;
   border: 0 solid #e2e8f0;
-  border-radius: 15px;
+  border-radius: 20px;
   box-sizing: border-box;
   color: #0d172a;
   cursor: pointer;
   display: inline-block;
   font-family: "Shippori Mincho",serif;
-  font-size: 10px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1;
   padding: 1rem 1.6rem;
@@ -100,7 +100,7 @@ footer {
 
 @media (min-width: 768px) {
   .button-81 {
-    font-size: 8px;
-    padding: 10px;
+    font-size: 15px;
+    padding: 18px;
   }
 }
