@@ -38,7 +38,7 @@ class Public::OrdersController < ApplicationController
     if params[:order][:select_address] == "0"
       @order.zip_code = current_customer.zip_code
       @order.shipping_address = current_customer.address
-      @order.shipping_name = current_customer.first_name + current_customer.last_name
+      @order.shipping_name = current_customer.last_name + current_customer.first_name
     elsif params[:order][:select_address] == "1"
        @address = Address.find(params[:order][:address_id])
        @order.zip_code = @address.zip_code
@@ -62,7 +62,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = current_customer.orders.all
     @ordered_items = OrderDetail.all
   end
 
