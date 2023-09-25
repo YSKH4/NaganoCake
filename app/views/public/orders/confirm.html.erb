@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row m-3">
     <div class="col-md-12">
-    <h3 style="background-color:#d3d3d3">注文情報確認</h3>
+      <h3 class="border-bottom"><strong>注文情報確認</strong></h3>
     </div>
   </div>
-  
+
   <div class="row m-3">
     <div class="col-auto">
       <table class="table">
@@ -15,11 +15,11 @@
           <td>数量</td>
           <td>小計</td>
         </tr>
-      
+
         <% @sum = 0 %>
-      
+
         <% @cart_items.each do |cart_item| %>
-      
+
           <tr>
             <td>
               <%= image_tag cart_item.item.get_image(100,80) %>
@@ -34,7 +34,7 @@
           </tr>
         <% end %>
       </table>
-      
+
       <table>
         <tr>
           <td>送料</td>
@@ -49,7 +49,7 @@
           <td><%= @sum + 800 %></td>
         </tr>
       </table>
-      
+
       <table class="table">
         <tr>
           <th>支払い方法</th>
@@ -64,7 +64,7 @@
           </td>
         </tr>
       </table>
-      
+
       <%= form_with model: @order_new , url: "/orders" , local:true do |f| %>
         <%= f.hidden_field :customer_id, value: current_customer.id %>
         <%= f.hidden_field :payment_method, value:  @order.payment_method %>

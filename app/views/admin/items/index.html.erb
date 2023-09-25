@@ -1,39 +1,43 @@
 
-  <div style= 'width: 80% ; margin: 0 auto;' >
-  <h4 style="background-color:#d3d3d3">商品一覧 &emsp;&emsp;
-  <%= link_to "", new_admin_item_path, class: "fas fa-plus" %></h4>
-  <table class='table table-hover table-inverse'>
-   <thead>
-    <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜価格</th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
-    </tr>
-   </thead>
-   <tbody>
-      <% @items.each do |item| %>
-      <tr>
-        <td><%= item.id %></td>
-        <td><%= link_to item.name, admin_item_path(item.id) , class:"link" %></td>
-        <td><%= item.price %>円</td>
-        <td><%= item.genre.name %></td>
-        <td><% if item.is_active? %>
-            <p class="text-success , font-weight-bold"><%= item.is_active_text %></p>
-            <% else %>
-            <p class="text-secondary , font-weight-bold"><%= item.is_active_text %></p>
-            <% end %>
-        </td>
-        <!--<td><%#= link_to 'Destroy', admin_item_path(item.id), method: :delete, data: { confirm: "本当に消しますか?" }, class: "btn btn-sm btn-danger" %></td>-->
-      </tr>
-     <% end %>
-    </tbody>
-   </table>
-   </div>
-  <div class="outer">
-    <div class="inner">
-      <%= paginate @items %>
+  <div style= 'width: 80% ; margin: 0 auto;' class="py-4" >
+    <h3 class="border-bottom"><strong>商品一覧 &emsp;&emsp;
+      <%= link_to "", new_admin_item_path, class: "fas fa-plus" %></strong>
+    </h3>
+
+    <div class="row m-3">
+      <table class='table table-hover table-inverse'>
+       <thead>
+        <tr>
+          <th>商品ID</th>
+          <th>商品名</th>
+          <th>税抜価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </tr>
+       </thead>
+       <tbody>
+          <% @items.each do |item| %>
+          <tr>
+            <td><%= item.id %></td>
+            <td><%= link_to item.name, admin_item_path(item.id) , class:"link" %></td>
+            <td><%= item.price %>円</td>
+            <td><%= item.genre.name %></td>
+            <td><% if item.is_active? %>
+                <p class="text-success , font-weight-bold"><%= item.is_active_text %></p>
+                <% else %>
+                <p class="text-secondary , font-weight-bold"><%= item.is_active_text %></p>
+                <% end %>
+            </td>
+            <!--<td><%#= link_to 'Destroy', admin_item_path(item.id), method: :delete, data: { confirm: "本当に消しますか?" }, class: "btn btn-sm btn-danger" %></td>-->
+          </tr>
+         <% end %>
+        </tbody>
+       </table>
+    </div>
+  </div>
+      <div class="outer">
+        <div class="inner">
+          <%= paginate @items %>
     </div>
   </div>
 

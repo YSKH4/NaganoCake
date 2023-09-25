@@ -1,20 +1,20 @@
-  <div class="container">
-  <div style= 'width: 80% ; margin: 0 auto;' >
-    <h4 style="background-color:#d3d3d3">商品詳細</h4>
-  <div class="row">  
-  <div class="col">
-  <div><%= image_tag @item.get_image(300,300) %></div>
+<div class="container">
+  <div style= 'width: 80% ; margin: 0 auto;' class="py-3" >
+    <h3 class="border-bottom"><strong>商品詳細</strong></h3>
+    <div class="row">
+      <div class="col">
+        <div><%= image_tag @item.get_image(300,300) %></div>
+      </div>
+
+      <div class="col">
+        <p>商品名：<%= @item.name %></p>
+        <p>商品説明：<%= @item.caption %></p>
+        <p>ジャンル：<%= @item.genre.name %></p>
+        <p>税込価格：<%= @item.add_tax_price.to_s(:dalimited) %>円</p>
+        <p>販売ステータス：<%= @item.is_active_text %></p>
+        <p><%= link_to "編集する", edit_admin_item_path, class: "btn btn-success" %></p>
+      </div>
+    </div>
   </div>
-  
-  <div class="col">
-    <p>商品名：<%= @item.name %></p>
-    <p>商品説明：<%= @item.caption %></p>
-    <p>ジャンル：<%= @item.genre.name %></p>
-    <p>税込価格：<%= @item.add_tax_price.to_s(:dalimited) %>円</p>
-    <p>販売ステータス：<%= @item.is_active_text %></p>
-    <p><%= link_to "編集する", edit_admin_item_path, class: "btn btn-success" %></p>
-  </div>
-  </div>
-  </div>
-  </div>
-  
+</div>
+
