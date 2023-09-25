@@ -1,6 +1,7 @@
-    <div style= 'width: 80% ; margin: 0 auto;' >
+<div class="container">
+  <div style= 'width: 80% ; margin: 0 auto;' >
     <h4 style="background-color:#d3d3d3">会員一覧</h4>
-  <table class="table table-hover table-inverse">
+    <table class="table table-hover table-inverse">
     <thead>
       <tr>
         <th>会員ID</th>
@@ -13,7 +14,7 @@
         <% @customers.each do |customer| %>
       <tr>
         <td><%= customer.id %></td>
-        <td><%= link_to customer.full_name, admin_customer_path(customer.id) %></td>
+        <td><%= link_to customer.full_name, admin_customer_path(customer.id), class:"link" %></td>
         <td><%= customer.email %></td>
         <td><% if customer.is_deleted? %>
             <p class="text-secondary , font-weight-bold"><%= customer.is_deleted_text %></p>
@@ -24,10 +25,12 @@
       </tr>
         <% end %>
     </tbody>
-  </table>
+    </table>
   </div>
+
   <div class="outer">
     <div class="inner">
       <%= paginate @customers %>
     </div>
-  </div> 
+  </div>
+ </div>

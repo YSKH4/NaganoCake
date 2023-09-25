@@ -16,13 +16,13 @@
  header, main, footer {
    font-family: "Shippori Mincho",serif;
  }
- 
+
  header{
    color: #777777;
    background-color: #FFF6EA;
    border-color: rgba(47, 39, 37, 0.25);
  }
- 
+
  main{
    color: white;
    background-color: #888888;
@@ -112,7 +112,7 @@ footer {
   }
 }
 
-  
+
   .link {
     color: white;
     text-decoration: none;
