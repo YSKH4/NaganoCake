@@ -79,7 +79,7 @@ footer {
   cursor: pointer;
   display: inline-block;
   font-family: "Shippori Mincho",serif;
-  font-size: 10px;
+  font-size: 15px;
   font-weight: 600;
   line-height: 1;
   padding: 1rem 1.6rem;
@@ -91,6 +91,7 @@ footer {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  margin: 10px 5px;
 }
 
 .button-81:hover {
