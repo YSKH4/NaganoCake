@@ -14,7 +14,7 @@ class Customer < ApplicationRecord
   validates :first_name_kana, presence: true
   validates :email, presence: true
   validates :zip_code, presence: true, length: { in: 3..7 }
-  validates :address, presence: true, length: { maximum: 50 }
+  validates :address, presence: true
   validates :telephone_number, presence: true
 
   def full_name
