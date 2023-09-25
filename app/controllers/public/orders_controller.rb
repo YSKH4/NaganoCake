@@ -47,7 +47,7 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:select_address] == "2"
       @order.customer_id = current_customer.id
     else
-      @addresses = Address.all
+      @addresses = current_customer.addresses.all
       flash.now[:notice] = "住所を選択してください"
       render 'new'
     end
