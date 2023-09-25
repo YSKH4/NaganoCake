@@ -1,10 +1,16 @@
+<style>
+.link{
+    color: white;
+}
+</style>
+
 <div class="container">
-  <div class="row m-2">
+  <div class="row m-3">
     <div class="col-md-12">
       <h3 class="border-bottom"><strong>注文履歴一覧</strong></h3>
     </div>
   </div>
-  <div class="row m-2">
+  <div class="row m-3">
     <div class="col-md-12">
       <table class='table table-hover table-inverse'>
        <thead>
@@ -31,13 +37,13 @@
                <td>
             <!--<ul class="list-unstyled">-->
                 <% order.order_details.each do |order_detail|  %>
-                  <%= order_detail.item.name %><br>
+                  <%= order_detail.item.name %>
                 <% end %>
             <!--</ul>-->
               </td>
               <td><%= order.billing_amount %></td>
               <td><%= order.status_i18n %></td>
-              <td><%= link_to "表示する", order_path(order.id), class: "button-39" %></td>
+              <td><%= link_to "表示する", order_path(order.id), class: "btn btn-sm btn-success" %></td>
           </tr>
         <% end %>
       </body>
