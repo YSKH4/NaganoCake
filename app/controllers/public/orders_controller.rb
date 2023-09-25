@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
+  before_action :is_matching_login_customer, only: [:show]
   # before_action :cartitem_nill,   only: [:new, :create]
   #   def cartitem_nill
   #   cart_items = current_end_user.cart_items
@@ -80,5 +82,10 @@ class Public::OrdersController < ApplicationController
     params.require(:order).permit(:payment_method, :zip_code, :shipping_address, :shipping_name, :postage, :billing_amount, :customer_id , :status)
   end
 
-
+  def is_matching_login_customer
+    order = Order.find(params[:id])
+    unless order.customer.id == current_customer.id
+      redirect_to root_path
+    end
+  end
 end
