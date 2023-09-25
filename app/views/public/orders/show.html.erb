@@ -10,7 +10,7 @@
       <h4>注文情報</h4>
 
       <%= form_with model: @order, url: orders_path, local: true do |f| %>
-      <table border="1" width="800" height="100" cellpadding="5">
+      <table border="1" bordercolor="white" width="800" height="100" cellpadding="5">
         <tr align="center">
           <th>注文日</th>
           <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
@@ -41,7 +41,7 @@
     <div class='col-md-6'>
       <h4>注文内容</h4>
 
-      <table border="1" width="500" height="60" cellpadding="5">
+      <table border="1" bordercolor="white" width="500" height="60" cellpadding="5">
         <tr align="center">
           <th>商品</th>
           <th>単価（税込み）</th>
@@ -63,7 +63,7 @@
 
     <div class="col-md-6">
       <h4>請求情報</h4>
-      <table border="1" width="400" height="200" cellpadding="5">
+      <table border="1" bordercolor="white" width="400" height="200" cellpadding="5">
         <tr align="center">
           <% total_price = 0 %> <!-- total_priceを初期化 -->
           <% @ordered_items.each do |ordered_item| %>
