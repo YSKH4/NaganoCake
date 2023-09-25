@@ -1,62 +1,4 @@
 <div class="container">
-<<<<<<< HEAD
-  <h4 style="background-color:#d3d3d3">注文履歴詳細</h4>
-
-<div class="main">
-  <p>購入者：<%= @order.customer.full_name %></p>
-  <p>注文日：<%= @order.created_at.strftime('%Y/%m/%d') %></p>
-  <p>配送先：<%= @order.full_address %></p>
-  <p>支払方法：<%= @order.payment_method_i18n %></p>
-  <p>注文ステータス：<%= form_with model: @order,url: admin_order_path do |f| %>
-                     <%= f.select :status, Order.statuses_i18n.invert %>
-                     <%= f.submit '更新' %>
-                     <% end %>
-  </p>
-</div>
-  <div class="row">
-  <div class="col-6">
-  <table class='table table-hover table-inverse'>
-   <thead>
-    <tr>
-      <th>商品名</th>
-      <th>単価（税込）</th>
-      <th>数量</th>
-      <th>小計</th>
-      <th>制作ステータス</th>
-    </tr>
-   </thead>
-   <tbody>
-     <% @order_details.each do |order_detail| %>
-      <tr>
-        <td><%= order_detail.item.name %></td>
-        <td><%= order_detail.unit_price %></td>
-        <td><%= order_detail.amount %></td>
-        <td><%= order_detail.subtotal %></td>
-        <td><%= form_with model: order_detail,url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
-            <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
-            <%= f.submit '更新',class: "button-39" %>
-            <% end %>
-        </td>
-      </tr>
-     <% end %>
-    </tbody>
-   </table>
-   </div>
-
-   <div class="col-6">
-  <% if @order_details.present? %>
-    <% total_price = 0 %> <!-- total_priceを初期化 -->
-    <% @order_details.each do |order_detail| %>
-    <% total_price += order_detail.unit_price*order_detail.amount %> <!-- total_amountを更新 -->
-    <% end %>
-    <p>合計金額: <%= total_price %>円</p>
-    <p>送料：<%= @order.postage %>円</p>
-    <p>請求金額：<%= @order.billing_amount %>円</p>
-  <% else %>
-    <p>注文詳細データが存在しません</p>
-  <% end %>
-   </div>
-=======
   <div class="row py-4">
     <div class="col">
       <h3 class="border-bottom"><strong>注文履歴詳細</strong></h4>
@@ -72,7 +14,7 @@
       <p>支払方法：<%= @order.payment_method_i18n %></p>
       <p>注文ステータス：<%= form_with model: @order,url: admin_order_path do |f| %>
                          <%= f.select :status, Order.statuses_i18n.invert %>
-                         <%= f.submit '更新' %>
+                         <%= f.submit '更新', class: "button-39" %>
                          <% end %>
       </p>
      </div>
@@ -98,7 +40,7 @@
                 <td><%= order_detail.subtotal %></td>
                 <td><%= form_with model: order_detail,url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
                     <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
-                    <%= f.submit '更新' %>
+                    <%= f.submit '更新' , class: "button-39 mt-2 "%>
                     <% end %>
                 </td>
               </tr>
@@ -122,7 +64,6 @@
         </div>
       </div>
     </div>
->>>>>>> origin/develop
   </div>
 </div>
 

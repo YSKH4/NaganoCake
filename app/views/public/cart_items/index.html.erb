@@ -1,10 +1,4 @@
-<!--ボタンカスタム-->
-<style>
-  .btn{
-    background-color: #efefef;
-    color:black;
-  }
-</style>
+
 <!--カートないアイテム-->
 <div class="container">
   <div class="row" style="margin:15px 0 ;">
@@ -22,7 +16,7 @@
 
   <div class="mb-3">
     <% if @cart_items.exists? %>
-      <table border="1">
+      <table border="1" bordercolor="white"> 
         <!--テーブルトップ-->
         <tr>
           <td width="25%">商品名</td>
@@ -58,11 +52,7 @@
 
             <td><%= ((item.price * 1.10).round * cart_item.amount).to_s(:delimited) %></td>
 
-<<<<<<< HEAD
             <td><%= link_to "削除する",cart_item_path(cart_item.id), class: "button-39", method: :delete %></td>
-=======
-            <td><%= link_to "削除する",cart_item_path(cart_item.id), class: "btn btn-outline-secondary", method: :delete %></td>
->>>>>>> origin/develop
           </tr>
         <% end %>
         <!--おしまい-->
@@ -75,11 +65,7 @@
 
   <div class="row">
     <div class="col-4">
-<<<<<<< HEAD
       <%= link_to "買い物を続ける", root_path, class: "button-39" %>
-=======
-      <%= link_to "買い物を続ける", root_path, class: "btn btn-outline-secondary" %>
->>>>>>> origin/develop
     </div>
 
     <div class="col-8 row justify-content-end">
