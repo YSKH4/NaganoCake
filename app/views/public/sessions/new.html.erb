@@ -1,51 +1,63 @@
 <div class="container">
   <div class="row">
-    <div class="col-3">
-      <h4 style="background-color:#d3d3d3">ログイン</h4>
+    <div class="col mt-5">
+      <h3 style="background-color:#d3d3d3">ログイン</h3>
     </div>
   </div>
   <div class="row ml-1">
     <div class="col-auto">
-      <h5 style="background-color:#d3d3d3">会員の方はこちらからログイン</h5>
+      <h4 style="background-color:#d3d3d3">会員の方はこちらからログイン</h4>
     </div>
   </div>
     <div class="row justify-content-center">
-      <div class="col mt-3 text-center">
+      <div class="col mt-3">
       <%= form_with model: @customer, url: customer_session_path do |f| %>
 
-        <div class="field">
+       <div class="row">
+        <h5 class="col-3 ml-3">
           <%= f.label :email, "メールアドレス"%>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </h5>
+        <div class="col-5 md-1">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
         </div>
+      </div>
 
-        <div class="field ">
+      <div class="row mt-4">
+        <h5 class="col-3 ml-3">
           <%= f.label :password, "パスワード" %>
-          <%= f.password_field :password, autocomplete: "current-password" %>
+        </h5>
+        <div class="col-5 md-1">
+          <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
         </div>
+      </div>
 
         <% if devise_mapping.rememberable? %>
-          <div class="field ">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
+          <div class="row justify-content-center">
+            <h6 class="text-center">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </h6>
           </div>
         <% end %>
 
-        <div class="actions">
-          <%= f.submit "ログイン" %>
+        <div class="row justify-content-center">
+          <h5 class="actions mt-2 text-center">
+            <%= f.submit "ログイン" %>
+          </h5>
         </div>
-
+      <% end %>
       </div>
     </div>
-  <% end %>
+
 
   <div class="row ml-1 mt-5">
     <div class="col-auto">
-      <h5 style="background-color:#d3d3d3">会員登録がお済みでない方</h5>
+      <h4 style="background-color:#d3d3d3">会員登録がお済みでない方</h4>
     </div>
   </div>
   <div class="row mb-4">
-    <div class="col mt-3 text-center">
+    <h5 class="col mt-3 text-center">
       <%= link_to "こちら", new_customer_registration_path %>から新規登録を行なってください。
-    </div>
+    </h5>
   </div>
 </div>
