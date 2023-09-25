@@ -17,7 +17,7 @@
    font-family: "Shippori Mincho",serif;
  }
 
- header{
+ header, footer{
    color: #777777;
    background-color: #FFF6EA;
    border-color: rgba(47, 39, 37, 0.25);
@@ -68,9 +68,8 @@
 }
 
 footer {
-  height: 100px;
   width: 100%;
-  margin: 0 auto;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -117,7 +116,7 @@ footer {
     color: white;
     text-decoration: none;
   }
-  
+
   th {
     color: white;
 }
