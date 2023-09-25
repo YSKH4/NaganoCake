@@ -50,6 +50,7 @@ class Public::OrdersController < ApplicationController
       @order.customer_id = current_customer.id
     else
       @addresses = Address.all
+      flash.now[:notice] = "住所を選択してください"
       render 'new'
     end
 
