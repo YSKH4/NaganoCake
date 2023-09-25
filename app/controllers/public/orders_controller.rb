@@ -47,12 +47,14 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:select_address] == "2"
       @order.customer_id = current_customer.id
     else
+      @addresses = Address.all
+      flash.now[:notice] = "住所を選択してください"
       render 'new'
     end
-    
+
       @cart_items = current_customer.cart_items
       @order_new = Order.new
-    
+
       # render :confirm
   end
 
@@ -67,7 +69,7 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @ordered_items = @order.order_details.all
-    
+
      @total_amount = 0
   end
 
