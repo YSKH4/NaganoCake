@@ -14,7 +14,7 @@
 
     <div class="col-7 text-right">
       <% if @cart_items.exists? %>
-        <%= link_to "カートを空にする", cart_items_destroy_all_path, class: "d btn btn-outline-secondary", method: :delete, "data-confirm" => "本当に空にしますか？" %>
+        <%= link_to "カートを空にする", cart_items_destroy_all_path, class: "button-39", method: :delete, "data-confirm" => "本当に空にしますか？" %>
       <% end %>
     </div>
   </div>
@@ -52,13 +52,13 @@
                 <% else %>
                   <%= f.select :amount, *[1..((cart_item.amount + 20).floor(-1))] %>
                 <% end %>
-                <%= f.submit"変更", class: "c btn btn-outline-secondary" %>
+                <%= f.submit"変更", class: "button-39" %>
               <% end %>
             </td>
 
             <td><%= ((item.price * 1.10).round * cart_item.amount).to_s(:delimited) %></td>
 
-            <td><%= link_to "削除する",cart_item_path(cart_item.id), class: "d btn btn-outline-secondary", method: :delete %></td>
+            <td><%= link_to "削除する",cart_item_path(cart_item.id), class: "button-39", method: :delete %></td>
           </tr>
         <% end %>
         <!--おしまい-->
@@ -71,7 +71,7 @@
 
   <div class="row">
     <div class="col-4">
-      <%= link_to "買い物を続ける", root_path, class: "p btn btn-outline-secondary" %>
+      <%= link_to "買い物を続ける", root_path, class: "button-39" %>
     </div>
 
     <div class="col-8 row justify-content-end">
@@ -89,7 +89,7 @@
   <div class="row">
     <div class="col-12 text-center py-4">
       <% if @cart_items.exists? %>
-        <%= link_to "情報入力に進む" ,new_order_path, class: "c btn btn-outline-secondary" %>
+        <%= link_to "情報入力に進む" ,new_order_path, class: "button-39" %>
       <% end %>
     </div>
   </div>
