@@ -13,7 +13,7 @@
         <% @customers.each do |customer| %>
       <tr>
         <td><%= customer.id %></td>
-        <td><%= link_to customer.full_name, admin_customer_path(customer.id) %></td>
+        <td><%= link_to customer.full_name, admin_customer_path(customer.id), class:"link" %></td>
         <td><%= customer.email %></td>
         <td><% if customer.is_deleted? %>
             <p class="text-secondary , font-weight-bold"><%= customer.is_deleted_text %></p>
@@ -30,4 +30,4 @@
     <div class="inner">
       <%= paginate @customers %>
     </div>
-  </div> 
+  </div>

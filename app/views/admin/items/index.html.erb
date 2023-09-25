@@ -1,6 +1,6 @@
 
   <div style= 'width: 80% ; margin: 0 auto;' >
-  <h4 style="background-color:#d3d3d3">商品一覧 &emsp;&emsp; 
+  <h4 style="background-color:#d3d3d3">商品一覧 &emsp;&emsp;
   <%= link_to "", new_admin_item_path, class: "fas fa-plus" %></h4>
   <table class='table table-hover table-inverse'>
    <thead>
@@ -16,7 +16,7 @@
       <% @items.each do |item| %>
       <tr>
         <td><%= item.id %></td>
-        <td><%= link_to item.name, admin_item_path(item.id)%></td>
+        <td><%= link_to item.name, admin_item_path(item.id) , class:"link" %></td>
         <td><%= item.price %>円</td>
         <td><%= item.genre.name %></td>
         <td><% if item.is_active? %>
@@ -35,5 +35,5 @@
     <div class="inner">
       <%= paginate @items %>
     </div>
-  </div> 
-  
+  </div>
+
