@@ -8,20 +8,26 @@
     </div>
 
     <div class="col-md-8 offset-md-1">
-      <div class="image-container mx-auto mt-5 mb-5">
+      <div class="mx-auto mt-5 mb-5">
         <!--商品詳細-->
-        <div class="text-left">
-          <table>
-            <tr>
-              <td><%= image_tag @item.get_image(150,150) %></td>
-              <td>
-                <strong><%= @item.name %></strong><br>
-                <%= @item.caption %><br>
-                ¥<%= (@item.price * 1.10).round %>(税込)
-              </td>
-            </tr>
-          </table>
-        </div>
+
+          <div class="row">
+            <div class="col-4">
+              <%= image_tag @item.get_image(150,150) %>
+            </div>
+
+            <div class="col-8">
+              <h5><%= @item.name %></h5>
+              <table>
+                <tr>
+                  <td>
+                    <%= @item.caption %><br>
+                    ¥<%= (@item.price * 1.10).round %>(税込)
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
         <!--おしまい-->
 
         <!--カートに入れるところ-->
