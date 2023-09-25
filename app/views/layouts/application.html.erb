@@ -33,27 +33,27 @@
 
             <% if admin_signed_in? %>
               <% if request.fullpath.include? "/admin" %> <!--admin側のheader-->
-                <li class="nav-item"><%= link_to "商品一覧", admin_items_path, class: 'btn btn-light nav-link ml-2' %></li>
-                <li class="nav-item"><%= link_to "会員一覧", admin_customers_path, class: 'btn btn-light nav-link ml-2' %></li>
-                <li class="nav-item"><%= link_to "注文履歴一覧", admin_path, class: 'btn btn-light nav-link ml-2'%></li>
-                <li class="nav-item"><%= link_to "ジャンル一覧", admin_genres_path, class: 'btn btn-light nav-link ml-2'%></li>
-                <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-light nav-link ml-2' %></li>
+                <li class="nav-item"><%= link_to "商品一覧", admin_items_path, class: 'button-81' %></li>
+                <li class="nav-item"><%= link_to "会員一覧", admin_customers_path, class: 'button-81' %></li>
+                <li class="nav-item"><%= link_to "注文履歴一覧", admin_path, class: 'button-81' %></li>
+                <li class="nav-item"><%= link_to "ジャンル一覧", admin_genres_path, class: 'button-81' %></li>
+                <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'button-81' %></li>
               <% else %> <!--customer側のheader-->
-              <li class="nav-item"><%= link_to "マイページ", customers_mypage_path, class: 'btn btn-light nav-link ml-2' %></li>
-              <li class="nav-item"><%= link_to "商品一覧", items_path, class: 'btn btn-light nav-link ml-2' %></li>
-              <li class="nav-item"><%= link_to "カート", cart_items_path, class: 'btn btn-light nav-link ml-2'%></li>
-              <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'btn btn-light nav-link ml-2' %></li>
+              <li class="nav-item"><%= link_to "マイページ", customers_mypage_path, class: 'button-81' %>
+              <li class="nav-item"><%= link_to "商品一覧", items_path, class: 'button-81' %></li>
+              <li class="nav-item"><%= link_to "カート", cart_items_path, class: 'button-81'%></li>
+              <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'button-81' %></li>
               <% end %>
             <% elsif customer_signed_in? %>
-              <li class="nav-item"><%= link_to "マイページ", customers_mypage_path, class: 'btn btn-light nav-link ml-2' %></li>
-              <li class="nav-item"><%= link_to "商品一覧", items_path, class: 'btn btn-light nav-link ml-2' %></li>
-              <li class="nav-item"><%= link_to "カート", cart_items_path, class: 'btn btn-light nav-link ml-2'%></li>
-              <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'btn btn-light nav-link ml-2' %></li>
+              <li class="nav-item"><%= link_to "マイページ", customers_mypage_path, class: 'button-81' %></li>
+              <li class="nav-item"><%= link_to "商品一覧", items_path, class: 'button-81' %></li>
+              <li class="nav-item"><%= link_to "カート", cart_items_path, class: 'button-81'%></li>
+              <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'button-81' %></li>
             <% else %>
-              <li class="nav-item"><%= link_to "About", homes_about_path, class: 'btn btn-light nav-link ml-2' %></li>
-              <li class="nav-item"><%= link_to "商品一覧", items_path, class: 'btn btn-light nav-link ml-2' %></li>
-              <li class="nav-item"><%= link_to "新規登録", new_customer_registration_path, class: 'btn btn-light nav-link ml-2' %></li>
-              <li class="nav-item"><%= link_to "ログイン", new_customer_session_path, class: 'btn btn-light nav-link ml-2' %></li>
+              <li class="nav-item"><%= link_to "About", homes_about_path, class: 'button-81' %></li>
+              <li class="nav-item"><%= link_to "商品一覧", items_path, class: 'button-81' %></li>
+              <li class="nav-item"><%= link_to "新規登録", new_customer_registration_path, class: 'button-81' %></li>
+              <li class="nav-item"><%= link_to "ログイン", new_customer_session_path, class: 'button-81' %></li>
             <% end %>
             </ul>
           </div>
@@ -83,12 +83,12 @@
     <footer>
       <div class="container">
         <div class="row justify-content-cencer mt-5">
-          <div class="col text-center">
+          <div class="col text-align:right">
           <p>Nagano Cake<br>
+             &ensp; <i class="fab fa-instagram"></i> &ensp;<i class="fab fa-line"></i> &ensp;<i class="fab fa-twitter"></i><br>
              address: 長野県長野市XXX<br>
              telephone-number: XXX-XXXX-XXXX<br>
              ©CopyRight Nagano-cake.inc</p>
-          </div>
         </div>
       </div>
     </footer>
