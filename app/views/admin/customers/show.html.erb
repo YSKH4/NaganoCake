@@ -1,5 +1,5 @@
-  <div style= 'width: 80% ; margin: 0 auto;' >
-  <h4 style="background-color:#d3d3d3"><%= @customer.full_name %>さんの会員詳細</h4>
+  <div style= 'width: 80% ; margin: 0 auto;' class="py-4" >
+  <h3 class="border-bottom"><strong><%= @customer.full_name %>さんの会員詳細</strong></h3>
 
   <p>会員ID <%= @customer.id %></p>
 
@@ -16,5 +16,10 @@
   <p>メールアドレス <%= @customer.email %></p>
 
   <p>会員ステータス <%= @customer.is_deleted_text %></p>
+<<<<<<< HEAD
   
   <p><%= link_to "編集する", edit_admin_customer_path, class: "button-39" %></p> <p><%= link_to "注文履歴一覧を見る", admin_order_path, class: "button-39" %></p>
+=======
+
+  <p><%= link_to "編集する", edit_admin_customer_path, class: "btn btn-success" %></p> <p><%= link_to "注文履歴一覧を見る", admin_order_path, class: "btn btn-primary" %></p>
+>>>>>>> origin/develop

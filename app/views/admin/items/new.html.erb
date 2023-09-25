@@ -1,6 +1,6 @@
 
-  <div style=' width: 90%; margin: 0 auto;'>
-  <h4 style="background-color:#d3d3d3">商品新規登録</h4>
+  <div style=' width: 90%; margin: 0 auto;' class="py-4" >
+  <h3 class="border-bottom"><strong>商品新規登録</strong></h3>
   <%= form_with model: @item,url: admin_items_path do |f| %>
   <div class="form-group row">
     <label for="inputImage" class="col-sm-2 col-form-label">商品画像</label>
@@ -15,28 +15,28 @@
       <%= f.text_field :name, placeholder:"商品名" %>
     </div>
   </div>
-  
+
   <div class="form-group row">
     <label for="inputCaption" class="col-sm-2 col-form-label">商品説明</label>
     <div class="col-sm-10">
       <%= f.text_area :caption, placeholder:"ここに説明文を記述します" %>
     </div>
   </div>
-  
+
   <div class="form-group row">
       <label for="inputState"  class="col-sm-2 col-form-label">ジャンル</label>
       <div class="col-sm-10">
       <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :genre_display), include_blank: "--選択して下さい--" %>
      </div>
     </div>
-  
+
   <div class="form-group row">
     <label for="inputPrice" class="col-sm-2 col-form-label">税抜価格</label>
     <div class="col-sm-10">
       <%= f.text_field :price, placeholder:"1000" %>円
     </div>
   </div>
-  
+
   <fieldset class="form-group">
     <div class="row">
       <legend class="col-form-label col-sm-2 pt-0">販売ステータス</legend>
@@ -49,7 +49,7 @@
         </div>
       </div>
     </div>
-    
+
   <div class="form-group row">
     <div class="col-sm-10">
       <button type="submit" class="button-39">新規登録</button>

@@ -1,5 +1,5 @@
-  <div style= 'width: 80% ; margin: 0 auto;' >
-  <h4 style="background-color:#d3d3d3"><%= @customer.full_name %>さんの会員情報編集</h4>
+  <div style= 'width: 80% ; margin: 0 auto;' class="py-4">
+  <h3 class="border-bottom"><strong><%= @customer.full_name %>さんの会員情報編集</strong></h3>
 
   <%= form_with model: @customer,url: admin_customer_path do |f| %>
 
