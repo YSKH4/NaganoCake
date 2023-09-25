@@ -1,20 +1,35 @@
- <div>
-  <%= flash[:notice] %>
-</div>
- 
-  <h3>ジャンル編集</h3>
-  
-  <% if @genre.errors.any? %>
-  <%= @genre.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @genre.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div>
+        <%= flash[:notice] %>
+      </div>
+    </div>
+  </div>
 
-      <%= form_with model: @genre, url: admin_genre_path, method: :patch do |f| %>
-        <td><%= f.label :"ジャンル名", class: "mr-3" %></td>
-        <td><%= f.text_field :name, class: "mr-5" %></td>
-        <td><%= f.submit "変更を保存", class: "btn btn-primary" %></td>
-      <% end %>
+  <div class="row mb-3">
+    <div class="col">
+        <h3 style="background-color:#d3d3d3">ジャンル編集</h3>
+    </div>
+  </div>
+
+    <div class="row">
+        <% if @genre.errors.any? %>
+        <%= @genre.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @genre.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+        <% end %>
+    </div>
+    <div class="row my-3">
+      <div class="col">
+            <%= form_with model: @genre, url: admin_genre_path, method: :patch do |f| %>
+              <td><%= f.label :"ジャンル名", class: "mr-3" %></td>
+              <td><%= f.text_field :name, class: "mr-5" %></td>
+              <td><%= f.submit "変更を保存", class: "btn btn-primary" %></td>
+            <% end %>
+      </div>
+    </div>
+</div>
