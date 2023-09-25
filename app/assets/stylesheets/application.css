@@ -16,10 +16,16 @@
  header, main, footer {
    font-family: "Shippori Mincho",serif;
  }
+ 
  header{
    color: #777777;
-   background-color: #EEEEEE;
+   background-color: #FFF6EA;
    border-color: rgba(47, 39, 37, 0.25);
+ }
+ 
+ main{
+   color: white;
+   background-color: #888888;
  }
 
 .image-container {
@@ -35,6 +41,7 @@
   padding: 10px; /* テキスト周りの余白（任意） */
   font-family: "Meiryo UI",serif;
   font-size: 15px;
+  color: #333333;
 }
 .text-content {
   text-align: center; /* テキストを中央揃え */
@@ -73,13 +80,13 @@ footer {
 .button-81 {
   background-color: #fff;
   border: 0 solid #e2e8f0;
-  border-radius: 15px;
+  border-radius: 20px;
   box-sizing: border-box;
   color: #0d172a;
   cursor: pointer;
   display: inline-block;
   font-family: "Shippori Mincho",serif;
-  font-size: 10px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1;
   padding: 1rem 1.6rem;
@@ -100,7 +107,13 @@ footer {
 
 @media (min-width: 768px) {
   .button-81 {
-    font-size: 8px;
-    padding: 10px;
+    font-size: 15px;
+    padding: 18px;
   }
 }
+
+  
+  .link {
+    color: white;
+    text-decoration: none;
+  }

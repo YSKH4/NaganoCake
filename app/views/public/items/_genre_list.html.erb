@@ -1,3 +1,4 @@
+
 <!--ジャンル検索機能-->
 <div>
   <table class= "table table-hover">
@@ -12,7 +13,7 @@
       <tr>
         <td>
           <!--クリエパラメータジャンルidを指定-->
-          <%= link_to items_path(genre_id: (genre.id)) do %>
+          <%= link_to items_path(genre_id: (genre.id)), class:"link" do %>
             <%= genre.name%>
           <% end %>
         </td>
