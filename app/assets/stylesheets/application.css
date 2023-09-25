@@ -117,3 +117,10 @@ footer {
     color: white;
     text-decoration: none;
   }
+  
+  th {
+    color: white;
+}
+  tr {
+    color: white;
+}
