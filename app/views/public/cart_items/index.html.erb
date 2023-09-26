@@ -70,10 +70,10 @@
 
     <div class="col-8 row justify-content-end">
       <% if @cart_items.exists? %>
-        <table border="1">
+        <table border="1" bordercolor="white">
           <tr>
             <td>合計金額</td>
-            <td><%= (@total_amount.sum).to_s(:delimited) %></td>
+            <td><%= (@total_amount.sum).to_s(:delimited) %>円</td>
           </tr>
         </table>
       <% end %>
