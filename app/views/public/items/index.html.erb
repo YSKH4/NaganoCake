@@ -5,6 +5,9 @@
       <%= render "genre_list", genres: @genres %>
     </div>
     <!--おしまい-->
+    <br>
+    <br>
+    <br>
 
 
     <div class="col-md-8 offset-md-1 ">
@@ -15,6 +18,8 @@
           <td>(全<%= @items_count.count %>件)</td>
         </tr>
       </table>
+      <br>
+      <br>
       <!--おしまい-->
 
       <!--商品一覧-->
@@ -23,7 +28,7 @@
           <div class="col-3">
             <%= link_to item_path(item.id) do %>
             <table>
-              <tr><td><%= image_tag item.get_image(100,100) %></td></tr>
+              <tr><td><%= image_tag item.get_image(150,150) %></td></tr>
               <tr><td><%= item.name %></td></tr>
               <tr><td>¥<%= ((item.price * 1.10).round).to_s(:delimited) %><br></td></tr>
             </table>
