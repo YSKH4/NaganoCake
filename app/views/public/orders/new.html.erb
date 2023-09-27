@@ -1,0 +1,59 @@
+
+
+<div class="container p-3">
+  <div class="row m-3">
+    <div class="col-md-12">
+      <h3 class="border-bottom"><strong>注文情報入力</strong></h3>
+    </div>
+  </div>
+
+  <div class="row m-4">
+    <div class="col-md-12">
+
+        <%= form_with model: @order, url: '/orders/confirm' , local: true do |f| %>
+
+        <h4><strong>支払い方法</strong></h4>
+        <%= f.radio_button :payment_method, "transfer" %>
+        <%= f.label :payment_method, "銀行振込" %>
+        <br>
+        <%= f.radio_button :payment_method, "credit_card" %>
+        <%= f.label :payment_method, "クレジットカード" %>
+        <br>
+        <br>
+
+        <div>
+        <h4><strong>お届け先</strong></h4>
+        <label><%= f.radio_button :select_address, 0 %><strong>ご自身の住所</strong></label><br>
+        〒<%= current_customer.zip_code %>&emsp;<%= current_customer.address %>&emsp;<%= current_customer.last_name %><%= current_customer.first_name %><br>
+        <br>
+
+        </div>
+          <div>
+            <label><%= f.radio_button :select_address, 1 %><strong>登録済み住所</strong></label><br>
+            <%= f.select :address_id , options_from_collection_for_select(@addresses, :id, :full_address) %>
+          </div>
+
+        <br>
+        <%= f.radio_button :select_address, 2 %><strong>新しいお届け先</strong>
+        <table>
+          <tr>
+            <td>郵便番号(ハイフンなし)</td>
+            <td> <%= f.text_field :zip_code %></td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td><%= f.text_field :shipping_address %></td>
+          </tr>
+          <tr>
+            <td>宛名</td>
+            <td><%= f.text_field :shipping_name %></td>
+          </tr>
+        </table>
+
+        <br>
+        <%= f.submit "確認画面へ進む",class: "button-39" %>
+       <% end %>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="container p-2">
+  <div class= "row">
+    <!--ジャンル一覧（ジャンル検索機能-->
+    <div class= "col-md-3 mt-5">
+      <%= render "genre_list", genres: @genres %>
+    </div>
+    <!--おしまい-->
+    <br>
+    <br>
+    <br>
+
+
+    <div class="col-md-8 offset-md-1 ">
+      <!--商品一覧タイトル-->
+      <table>
+        <tr>
+          <th><h3>商品一覧</h3></th>
+          <td>(全<%= @items_count.count %>件)</td>
+        </tr>
+      </table>
+      <br>
+      <br>
+      <!--おしまい-->
+
+      <!--商品一覧-->
+      <div class="row">
+        <% @items.each do |item| %>
+          <div class="col-3">
+            <%= link_to item_path(item.id) do %>
+            <table>
+              <tr><td><%= image_tag item.get_image(150,150) %></td></tr>
+              <tr><td><%= item.name %></td></tr>
+              <tr><td>¥<%= ((item.price * 1.10).round).to_s(:delimited) %><br></td></tr>
+            </table>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <!--おしまい-->
+    <!--商品ページネーション-->
+      <p><%= paginate @items %></p>
+    </div>
+    <!--おしまい-->
+
+  </div>
+</div>
